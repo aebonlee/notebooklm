@@ -1151,6 +1151,533 @@
     border-color: var(--nlm-white);
 }
 
+/* ── Home Preview Grid ── */
+.home-preview-grid {
+    display: grid;
+    grid-template-columns: repeat(3, 1fr);
+    gap: 24px;
+}
+
+.home-preview-card {
+    background: var(--nlm-white);
+    border: 1px solid var(--nlm-gray-300);
+    border-radius: var(--nlm-radius-lg);
+    padding: 36px;
+    text-decoration: none;
+    transition: var(--nlm-transition);
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    overflow: hidden;
+}
+
+.home-preview-card::before {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    right: 0;
+    height: 4px;
+    background: linear-gradient(90deg, var(--nlm-primary), var(--nlm-secondary));
+    transform: scaleX(0);
+    transition: transform 0.4s ease;
+}
+
+.home-preview-card:hover {
+    border-color: var(--nlm-primary);
+    box-shadow: var(--nlm-shadow-lg);
+    transform: translateY(-6px);
+}
+
+.home-preview-card:hover::before {
+    transform: scaleX(1);
+}
+
+.preview-badge {
+    display: inline-block;
+    padding: 4px 12px;
+    background: var(--nlm-primary-light);
+    color: var(--nlm-primary);
+    border-radius: var(--nlm-radius-full);
+    font-size: 0.7rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+    align-self: flex-start;
+}
+
+.preview-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.home-preview-card h3 {
+    font-size: 1.2rem;
+    font-weight: 700;
+    color: var(--nlm-gray-900);
+    margin-bottom: 10px;
+}
+
+.home-preview-card p {
+    font-size: 0.9rem;
+    color: var(--nlm-gray-600);
+    line-height: 1.7;
+    flex: 1;
+}
+
+.preview-link {
+    display: inline-block;
+    margin-top: 16px;
+    font-size: 0.9rem;
+    font-weight: 600;
+    color: var(--nlm-primary);
+}
+
+.home-preview-card:hover .preview-link {
+    text-decoration: underline;
+}
+
+/* ── Target Audience Grid (About page) ── */
+.target-audience-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.target-card {
+    background: var(--nlm-white);
+    border: 1px solid var(--nlm-gray-300);
+    border-radius: var(--nlm-radius-lg);
+    padding: 32px;
+    text-align: center;
+    transition: var(--nlm-transition);
+}
+
+.target-card:hover {
+    border-color: var(--nlm-primary);
+    box-shadow: var(--nlm-shadow-md);
+    transform: translateY(-4px);
+}
+
+.target-icon {
+    font-size: 2.5rem;
+    margin-bottom: 16px;
+}
+
+.target-card h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--nlm-gray-900);
+    margin-bottom: 10px;
+}
+
+.target-card p {
+    font-size: 0.85rem;
+    color: var(--nlm-gray-600);
+    line-height: 1.7;
+}
+
+/* ── Feature Detail Section (Features page) ── */
+.feature-detail-section {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 16px;
+    padding-top: 16px;
+    border-top: 1px solid var(--nlm-gray-200);
+}
+
+.feature-tier {
+    display: inline-flex;
+    align-self: flex-start;
+}
+
+.feature-tier span {
+    padding: 4px 14px;
+    background: var(--nlm-primary-light);
+    color: var(--nlm-primary);
+    border-radius: var(--nlm-radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* ── Comparison Table (Features page) ── */
+.comparison-table {
+    max-width: 800px;
+    margin: 0 auto;
+    border-radius: var(--nlm-radius);
+    overflow: hidden;
+    border: 1px solid var(--nlm-gray-300);
+}
+
+.comp-row {
+    display: grid;
+    grid-template-columns: 1.5fr 1fr 1fr;
+}
+
+.comp-row span {
+    padding: 14px 20px;
+    font-size: 0.9rem;
+    border-bottom: 1px solid var(--nlm-gray-200);
+    color: var(--nlm-gray-700);
+}
+
+.comp-header {
+    background: var(--nlm-gray-800);
+}
+
+.comp-header span {
+    color: var(--nlm-white);
+    font-weight: 600;
+    font-size: 0.85rem;
+    border-bottom: none;
+}
+
+.comp-even {
+    background: var(--nlm-gray-100);
+}
+
+.comp-row:last-child span {
+    border-bottom: none;
+}
+
+/* ── Curriculum Expand Cards (Curriculum page) ── */
+.curriculum-detail-list {
+    display: flex;
+    flex-direction: column;
+    gap: 16px;
+}
+
+.curriculum-expand-card {
+    background: var(--nlm-white);
+    border: 1px solid var(--nlm-gray-300);
+    border-radius: var(--nlm-radius-lg);
+    overflow: hidden;
+    transition: var(--nlm-transition);
+}
+
+.curriculum-expand-card:hover {
+    border-color: var(--nlm-primary);
+}
+
+.curriculum-expand-card.expanded {
+    border-color: var(--nlm-primary);
+    box-shadow: var(--nlm-shadow-md);
+}
+
+.curriculum-expand-card.curriculum-card-special {
+    border-style: dashed;
+    background: linear-gradient(135deg, var(--nlm-gray-100) 0%, var(--nlm-white) 100%);
+}
+
+.curriculum-expand-header {
+    width: 100%;
+    padding: 24px 32px;
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    gap: 24px;
+    font-family: 'Noto Sans KR', sans-serif;
+}
+
+.curriculum-expand-left {
+    display: flex;
+    align-items: flex-start;
+    gap: 20px;
+    flex: 1;
+}
+
+.curriculum-expand-left .curriculum-chapter {
+    flex-shrink: 0;
+    margin-bottom: 0;
+    padding-top: 2px;
+}
+
+.curriculum-expand-left h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--nlm-gray-900);
+    margin-bottom: 4px;
+}
+
+.curriculum-expand-left p {
+    font-size: 0.85rem;
+    color: var(--nlm-gray-600);
+    line-height: 1.6;
+}
+
+.curriculum-expand-right {
+    display: flex;
+    align-items: center;
+    gap: 16px;
+    flex-shrink: 0;
+}
+
+.curriculum-expand-card.expanded .faq-toggle {
+    transform: rotate(45deg);
+    color: var(--nlm-primary);
+}
+
+.curriculum-expand-body {
+    max-height: 0;
+    overflow: hidden;
+    transition: max-height 0.5s ease, padding 0.5s ease;
+}
+
+.curriculum-expand-card.expanded .curriculum-expand-body {
+    max-height: 800px;
+    padding: 0 32px 32px;
+}
+
+.curriculum-expand-grid {
+    display: grid;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 20px;
+}
+
+.curriculum-expand-col {
+    background: var(--nlm-gray-100);
+    border-radius: var(--nlm-radius);
+    padding: 20px;
+}
+
+.curriculum-expand-col h4 {
+    font-size: 0.9rem;
+    font-weight: 700;
+    color: var(--nlm-primary);
+    margin-bottom: 12px;
+}
+
+.curriculum-expand-col ul {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    list-style: none;
+}
+
+.curriculum-expand-col li {
+    font-size: 0.85rem;
+    color: var(--nlm-gray-700);
+    padding-left: 18px;
+    position: relative;
+}
+
+.curriculum-expand-col li::before {
+    content: '✓';
+    position: absolute;
+    left: 0;
+    color: var(--nlm-secondary);
+    font-weight: 700;
+    font-size: 0.8rem;
+}
+
+.curriculum-tools {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+}
+
+.curriculum-tools span {
+    padding: 4px 12px;
+    background: var(--nlm-primary-light);
+    color: var(--nlm-primary);
+    border-radius: var(--nlm-radius-full);
+    font-size: 0.75rem;
+    font-weight: 600;
+}
+
+/* ── Learning Flow (Curriculum page) ── */
+.learning-flow {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-wrap: wrap;
+    gap: 8px;
+    max-width: 900px;
+    margin: 0 auto;
+}
+
+.flow-item {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.flow-marker {
+    padding: 8px 16px;
+    background: var(--nlm-primary);
+    color: var(--nlm-white);
+    border-radius: var(--nlm-radius-full);
+    font-size: 0.75rem;
+    font-weight: 700;
+    letter-spacing: 0.5px;
+}
+
+.flow-label {
+    font-size: 0.8rem;
+    font-weight: 600;
+    color: var(--nlm-gray-700);
+    max-width: 100px;
+}
+
+.flow-arrow {
+    font-size: 1.2rem;
+    color: var(--nlm-gray-400);
+    margin: 0 4px;
+}
+
+/* ── Technique Extra (Techniques page) ── */
+.technique-extra {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    margin-top: 20px;
+    padding-top: 20px;
+    border-top: 1px solid var(--nlm-gray-200);
+}
+
+.technique-tips {
+    background: var(--nlm-gray-100);
+    border-radius: var(--nlm-radius);
+    padding: 16px 20px;
+}
+
+.technique-tips strong {
+    display: block;
+    font-size: 0.85rem;
+    color: var(--nlm-gray-900);
+    margin-bottom: 10px;
+}
+
+.technique-tips ul {
+    display: flex;
+    flex-direction: column;
+    gap: 6px;
+    list-style: none;
+}
+
+.technique-tips li {
+    font-size: 0.85rem;
+    color: var(--nlm-gray-600);
+    padding-left: 20px;
+    position: relative;
+}
+
+.technique-tips li::before {
+    content: '💡';
+    position: absolute;
+    left: 0;
+    font-size: 0.75rem;
+}
+
+/* ── Training Programs Grid (Consulting page) ── */
+.training-programs-grid {
+    display: grid;
+    grid-template-columns: repeat(4, 1fr);
+    gap: 24px;
+}
+
+.training-card {
+    background: var(--nlm-white);
+    border: 1px solid var(--nlm-gray-300);
+    border-radius: var(--nlm-radius-lg);
+    padding: 32px;
+    position: relative;
+    transition: var(--nlm-transition);
+}
+
+.training-card:hover {
+    border-color: var(--nlm-primary);
+    box-shadow: var(--nlm-shadow-lg);
+    transform: translateY(-4px);
+}
+
+.training-featured {
+    border-color: var(--nlm-primary);
+    box-shadow: var(--nlm-shadow-md);
+}
+
+.training-icon {
+    font-size: 2rem;
+    margin-bottom: 16px;
+}
+
+.training-card h3 {
+    font-size: 1.1rem;
+    font-weight: 700;
+    color: var(--nlm-gray-900);
+    margin-bottom: 10px;
+}
+
+.training-card > p {
+    font-size: 0.9rem;
+    color: var(--nlm-gray-600);
+    line-height: 1.7;
+    margin-bottom: 20px;
+}
+
+/* ── Consulting Process (Consulting page) ── */
+.consulting-process {
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    gap: 0;
+    max-width: 900px;
+    margin: 0 auto;
+    flex-wrap: wrap;
+}
+
+.process-step {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: center;
+    flex: 1;
+    min-width: 180px;
+    position: relative;
+}
+
+.process-number {
+    width: 56px;
+    height: 56px;
+    border-radius: 50%;
+    background: var(--nlm-primary);
+    color: var(--nlm-white);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    font-family: var(--nlm-font-display);
+    font-weight: 800;
+    font-size: 1.1rem;
+    margin-bottom: 16px;
+}
+
+.process-step h3 {
+    font-size: 1.05rem;
+    font-weight: 700;
+    color: var(--nlm-gray-900);
+    margin-bottom: 8px;
+}
+
+.process-step p {
+    font-size: 0.85rem;
+    color: var(--nlm-gray-600);
+    line-height: 1.6;
+    max-width: 180px;
+}
+
+.process-arrow {
+    position: absolute;
+    right: -16px;
+    top: 20px;
+    font-size: 1.5rem;
+    color: var(--nlm-gray-400);
+}
+
 /* ── Animations ── */
 .fade-in {
     opacity: 0;
@@ -1170,6 +1697,18 @@
     }
     .curriculum-grid {
         grid-template-columns: repeat(2, 1fr);
+    }
+    .home-preview-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .target-audience-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .training-programs-grid {
+        grid-template-columns: repeat(2, 1fr);
+    }
+    .curriculum-expand-grid {
+        grid-template-columns: 1fr;
     }
 }
 
@@ -1233,6 +1772,56 @@
     .cta-actions {
         flex-direction: column;
         align-items: center;
+    }
+    .home-preview-grid {
+        grid-template-columns: 1fr;
+    }
+    .target-audience-grid {
+        grid-template-columns: 1fr;
+    }
+    .training-programs-grid {
+        grid-template-columns: 1fr;
+    }
+    .comp-row {
+        grid-template-columns: 1.2fr 0.8fr 0.8fr;
+    }
+    .comp-row span {
+        padding: 10px 12px;
+        font-size: 0.8rem;
+    }
+    .consulting-process {
+        flex-direction: column;
+        align-items: center;
+    }
+    .process-arrow {
+        position: static;
+        transform: rotate(90deg);
+        margin: 8px 0;
+    }
+    .learning-flow {
+        flex-direction: column;
+    }
+    .flow-item {
+        flex-direction: column;
+        text-align: center;
+    }
+    .flow-label {
+        max-width: none;
+    }
+    .flow-arrow {
+        transform: rotate(90deg);
+    }
+    .curriculum-expand-header {
+        padding: 20px;
+        flex-direction: column;
+        align-items: flex-start;
+    }
+    .curriculum-expand-right {
+        width: 100%;
+        justify-content: space-between;
+    }
+    .curriculum-expand-card.expanded .curriculum-expand-body {
+        padding: 0 20px 20px;
     }
 }
 
@@ -1772,4 +2361,202 @@
 [data-theme="dark"] .btn-outline:hover {
     background: #6ba3f7;
     color: #111827;
+}
+
+/* ── Dark: Home Preview Cards ── */
+[data-theme="dark"] .home-preview-card {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .home-preview-card:hover {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .home-preview-card::before {
+    background: linear-gradient(90deg, #6ba3f7, #5dc97a);
+}
+
+[data-theme="dark"] .preview-badge {
+    background: rgba(107, 163, 247, 0.12);
+    color: #6ba3f7;
+}
+
+[data-theme="dark"] .home-preview-card h3 {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .home-preview-card p {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .preview-link {
+    color: #6ba3f7;
+}
+
+/* ── Dark: Target Audience ── */
+[data-theme="dark"] .target-card {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .target-card:hover {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .target-card h3 {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .target-card p {
+    color: #9ca3af;
+}
+
+/* ── Dark: Feature Detail ── */
+[data-theme="dark"] .feature-detail-section {
+    border-top-color: #374151;
+}
+
+[data-theme="dark"] .feature-tier span {
+    background: rgba(107, 163, 247, 0.12);
+    color: #6ba3f7;
+}
+
+/* ── Dark: Comparison Table ── */
+[data-theme="dark"] .comparison-table {
+    border-color: #374151;
+}
+
+[data-theme="dark"] .comp-header {
+    background: #111827;
+}
+
+[data-theme="dark"] .comp-header span {
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .comp-row span {
+    border-bottom-color: #374151;
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .comp-even {
+    background: #1a1f2e;
+}
+
+/* ── Dark: Curriculum Expand ── */
+[data-theme="dark"] .curriculum-expand-card {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .curriculum-expand-card:hover {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .curriculum-expand-card.expanded {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .curriculum-expand-card.curriculum-card-special {
+    background: linear-gradient(135deg, #1a1f2e 0%, #1f2937 100%);
+    border-color: #374151;
+}
+
+[data-theme="dark"] .curriculum-expand-left h3 {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .curriculum-expand-left p {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .curriculum-expand-col {
+    background: #111827;
+}
+
+[data-theme="dark"] .curriculum-expand-col h4 {
+    color: #6ba3f7;
+}
+
+[data-theme="dark"] .curriculum-expand-col li {
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .curriculum-expand-col li::before {
+    color: #5dc97a;
+}
+
+[data-theme="dark"] .curriculum-tools span {
+    background: rgba(107, 163, 247, 0.12);
+    color: #6ba3f7;
+}
+
+/* ── Dark: Learning Flow ── */
+[data-theme="dark"] .flow-marker {
+    background: #4285f4;
+}
+
+[data-theme="dark"] .flow-label {
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .flow-arrow {
+    color: #4b5563;
+}
+
+/* ── Dark: Technique Extra ── */
+[data-theme="dark"] .technique-extra {
+    border-top-color: #374151;
+}
+
+[data-theme="dark"] .technique-tips {
+    background: #111827;
+}
+
+[data-theme="dark"] .technique-tips strong {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .technique-tips li {
+    color: #9ca3af;
+}
+
+/* ── Dark: Training Programs ── */
+[data-theme="dark"] .training-card {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .training-card:hover {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .training-featured {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .training-card h3 {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .training-card > p {
+    color: #9ca3af;
+}
+
+/* ── Dark: Consulting Process ── */
+[data-theme="dark"] .process-number {
+    background: #4285f4;
+}
+
+[data-theme="dark"] .process-step h3 {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .process-step p {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .process-arrow {
+    color: #4b5563;
 }

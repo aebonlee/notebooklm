@@ -53,20 +53,20 @@ const site: SiteConfig = {
   ],
 
   menuItems: [
-    { path: '/#about', labelKey: 'site.nav.about' },
-    { path: '/#features', labelKey: 'site.nav.features' },
-    { path: '/#curriculum', labelKey: 'site.nav.curriculum' },
-    { path: '/#workflow', labelKey: 'site.nav.workflow' },
-    { path: '/#consulting', labelKey: 'site.nav.consulting' },
-    { path: '/#faq', labelKey: 'site.nav.faq' },
+    { path: '/about', labelKey: 'site.nav.about' },
+    { path: '/features', labelKey: 'site.nav.features' },
+    { path: '/curriculum', labelKey: 'site.nav.curriculum' },
+    { path: '/techniques', labelKey: 'site.nav.workflow' },
+    { path: '/consulting', labelKey: 'site.nav.consulting' },
+    { path: '/consulting#faq', labelKey: 'site.nav.faq' },
   ],
 
   footerLinks: [
     { path: '/', labelKey: 'nav.home' },
-    { path: '/#about', labelKey: 'site.nav.about' },
-    { path: '/#curriculum', labelKey: 'site.nav.curriculum' },
-    { path: '/#consulting', labelKey: 'site.nav.consulting' },
-    { path: '/#faq', labelKey: 'site.nav.faq' },
+    { path: '/about', labelKey: 'site.nav.about' },
+    { path: '/curriculum', labelKey: 'site.nav.curriculum' },
+    { path: '/consulting', labelKey: 'site.nav.consulting' },
+    { path: '/consulting#faq', labelKey: 'site.nav.faq' },
   ],
 
   familySites: [

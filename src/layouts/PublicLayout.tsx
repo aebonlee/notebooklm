@@ -1,5 +1,5 @@
-import { lazy, Suspense, type ReactElement } from 'react';
-import { Routes, Route } from 'react-router-dom';
+import { lazy, Suspense, useEffect, type ReactElement } from 'react';
+import { Routes, Route, useLocation } from 'react-router-dom';
 import AuthGuard from '../components/AuthGuard';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
@@ -7,6 +7,11 @@ import site from '../config/site';
 
 // 페이지 lazy import
 const Home = lazy(() => import('../pages/Home'));
+const About = lazy(() => import('../pages/About'));
+const Features = lazy(() => import('../pages/Features'));
+const Curriculum = lazy(() => import('../pages/Curriculum'));
+const Techniques = lazy(() => import('../pages/Techniques'));
+const Consulting = lazy(() => import('../pages/Consulting'));
 const NotFound = lazy(() => import('../pages/NotFound'));
 
 // Auth 페이지 (features.auth로 토글)
@@ -27,15 +32,31 @@ const Loading = (): ReactElement => (
   </div>
 );
 
+const ScrollToTop = (): null => {
+  const { pathname } = useLocation();
+  useEffect(() => {
+    window.scrollTo(0, 0);
+  }, [pathname]);
+  return null;
+};
+
 const PublicLayout = (): ReactElement => {
   return (
     <>
+      <ScrollToTop />
       <Navbar />
       <main>
         <Suspense fallback={<Loading />}>
           <Routes>
             {/* Home */}
             <Route path="/" element={<Home />} />
+
+            {/* Site pages */}
+            <Route path="/about" element={<About />} />
+            <Route path="/features" element={<Features />} />
+            <Route path="/curriculum" element={<Curriculum />} />
+            <Route path="/techniques" element={<Techniques />} />
+            <Route path="/consulting" element={<Consulting />} />
 
             {/* Auth */}
             {site.features.auth && (
@@ -56,14 +77,6 @@ const PublicLayout = (): ReactElement => {
                 <Route path="/order-confirmation" element={<OrderConfirmation />} />
               </>
             )}
-
-            {/*
-              사이트 전용 페이지를 여기에 추가하세요.
-              예:
-              const Books = lazy(() => import('../pages/Books'));
-              <Route path="/books" element={<Books />} />
-              <Route path="/books/:category" element={<BookCategory />} />
-            */}
 
             {/* 404 */}
             <Route path="*" element={<NotFound />} />

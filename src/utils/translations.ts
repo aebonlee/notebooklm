@@ -183,6 +183,13 @@ export const translations: Record<string, Record<string, unknown>> = {
       home: {
         title: 'NotebookLM 학습 센터',
         subtitle: '드림아이티비즈가 제공하는 Google NotebookLM 교육 과정'
+      },
+      pages: {
+        about: { title: 'NotebookLM이란?', subtitle: 'Google Gemini 기반 AI 리서치 도구' },
+        features: { title: 'Studio 패널 기능', subtitle: 'NotebookLM의 핵심 기능 상세' },
+        curriculum: { title: '7개 챕터 교육 과정', subtitle: '체계적 NotebookLM 실전 커리큘럼' },
+        techniques: { title: '교육 핵심 기법', subtitle: 'NotebookLM 실전 기법' },
+        consulting: { title: '교육 & 컨설팅', subtitle: 'DreamIT Biz 교육 프로그램' }
       }
     }
   },
@@ -371,6 +378,13 @@ export const translations: Record<string, Record<string, unknown>> = {
       home: {
         title: 'NotebookLM Learning Center',
         subtitle: 'Google NotebookLM training course by DreamIT Biz'
+      },
+      pages: {
+        about: { title: 'What is NotebookLM?', subtitle: 'AI research tool powered by Google Gemini' },
+        features: { title: 'Studio Panel Features', subtitle: 'Key features of NotebookLM in detail' },
+        curriculum: { title: '7-Chapter Curriculum', subtitle: 'Systematic NotebookLM training course' },
+        techniques: { title: 'Key Techniques', subtitle: 'Practical NotebookLM techniques' },
+        consulting: { title: 'Training & Consulting', subtitle: 'DreamIT Biz training programs' }
       }
     }
   }
