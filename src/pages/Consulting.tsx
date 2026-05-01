@@ -1,5 +1,4 @@
 import { useState, useEffect, useRef, useCallback } from 'react';
-import { useLocation } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import type { ReactElement } from 'react';
 
@@ -38,7 +37,6 @@ const faqItems = [
 const Consulting = (): ReactElement => {
   const [activeIdx, setActiveIdx] = useState<number | null>(null);
   const fadeRefs = useRef<(HTMLElement | null)[]>([]);
-  const location = useLocation();
 
   const setFadeRef = useCallback((el: HTMLElement | null) => {
     if (el && !fadeRefs.current.includes(el)) {
@@ -61,15 +59,6 @@ const Consulting = (): ReactElement => {
     fadeRefs.current.forEach((el) => { if (el) observer.observe(el); });
     return () => observer.disconnect();
   }, []);
-
-  // Handle #faq hash scroll
-  useEffect(() => {
-    if (location.hash === '#faq') {
-      setTimeout(() => {
-        document.getElementById('faq')?.scrollIntoView({ behavior: 'smooth' });
-      }, 300);
-    }
-  }, [location.hash]);
 
   const toggleFaq = (idx: number) => {
     setActiveIdx(activeIdx === idx ? null : idx);

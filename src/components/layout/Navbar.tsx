@@ -65,8 +65,10 @@ const Navbar = (): ReactElement => {
 
   const isActive = (item: ResolvedMenuItem): boolean => {
     const checkPath = item.activePath || item.path;
-    if (checkPath === '/') return location.pathname === '/';
-    return location.pathname.startsWith(checkPath);
+    // Hash 포함 경로(예: /consulting#faq)에서 pathname 부분만 추출
+    const pathOnly = checkPath.split('#')[0];
+    if (pathOnly === '/') return location.pathname === '/';
+    return location.pathname.startsWith(pathOnly);
   };
 
   const userInitial = (profile?.display_name || profile?.email || '?')[0].toUpperCase();

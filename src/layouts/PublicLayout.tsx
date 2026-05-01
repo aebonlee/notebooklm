@@ -33,10 +33,17 @@ const Loading = (): ReactElement => (
 );
 
 const ScrollToTop = (): null => {
-  const { pathname } = useLocation();
+  const { pathname, hash } = useLocation();
   useEffect(() => {
-    window.scrollTo(0, 0);
-  }, [pathname]);
+    // hash가 있으면 해당 요소로 스크롤, 없으면 최상단
+    if (hash) {
+      setTimeout(() => {
+        document.getElementById(hash.slice(1))?.scrollIntoView({ behavior: 'smooth' });
+      }, 100);
+    } else {
+      window.scrollTo(0, 0);
+    }
+  }, [pathname, hash]);
   return null;
 };
 
