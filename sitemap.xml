@@ -8,6 +8,46 @@
     <priority>1.0</priority>
   </url>
 
+  <!-- About -->
+  <url>
+    <loc>https://notebooklm.dreamitbiz.com/about</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Features -->
+  <url>
+    <loc>https://notebooklm.dreamitbiz.com/features</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Curriculum -->
+  <url>
+    <loc>https://notebooklm.dreamitbiz.com/curriculum</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Techniques -->
+  <url>
+    <loc>https://notebooklm.dreamitbiz.com/techniques</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
+  <!-- Consulting -->
+  <url>
+    <loc>https://notebooklm.dreamitbiz.com/consulting</loc>
+    <lastmod>2026-05-01</lastmod>
+    <changefreq>monthly</changefreq>
+    <priority>0.8</priority>
+  </url>
+
   <!-- Login -->
   <url>
     <loc>https://notebooklm.dreamitbiz.com/login</loc>
