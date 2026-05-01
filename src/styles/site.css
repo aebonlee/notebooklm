@@ -1258,3 +1258,518 @@
         box-shadow: none;
     }
 }
+
+/* ============================================
+   Dark Mode — NotebookLM Custom Elements
+   ============================================ */
+
+/* ── Variables ── */
+[data-theme="dark"] {
+    --nlm-primary: #6ba3f7;
+    --nlm-primary-dark: #4285f4;
+    --nlm-primary-light: rgba(66, 133, 244, 0.15);
+    --nlm-secondary: #5dc97a;
+    --nlm-accent: #fdd663;
+    --nlm-danger: #f28b82;
+    --nlm-gray-900: #f3f4f6;
+    --nlm-gray-800: #e5e7eb;
+    --nlm-gray-700: #d1d5db;
+    --nlm-gray-600: #9ca3af;
+    --nlm-gray-500: #6b7280;
+    --nlm-gray-400: #4b5563;
+    --nlm-gray-300: #374151;
+    --nlm-gray-200: #1f2937;
+    --nlm-gray-100: #1a1f2e;
+    --nlm-white: #111827;
+}
+
+/* ── Hero ── */
+[data-theme="dark"] .hero {
+    background: linear-gradient(135deg, #0f172a 0%, #1e293b 30%, #111827 70%, #0f172a 100%);
+}
+
+[data-theme="dark"] .hero-badge {
+    background: rgba(107, 163, 247, 0.15);
+    border-color: rgba(107, 163, 247, 0.3);
+}
+
+[data-theme="dark"] .hero-title {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .gradient-text {
+    background: linear-gradient(135deg, #6ba3f7 0%, #a78bfa 50%, #f28b82 100%);
+    -webkit-background-clip: text;
+    background-clip: text;
+}
+
+[data-theme="dark"] .hero-desc {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .shape-1 {
+    opacity: 0.08;
+}
+
+[data-theme="dark"] .shape-2 {
+    opacity: 0.06;
+}
+
+[data-theme="dark"] .shape-3 {
+    opacity: 0.05;
+}
+
+/* ── Section ── */
+[data-theme="dark"] .section {
+    background: #111827;
+}
+
+[data-theme="dark"] .section-alt {
+    background: #0f172a;
+}
+
+[data-theme="dark"] .section-title {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .section-desc {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .section-badge {
+    background: rgba(107, 163, 247, 0.15);
+    color: #6ba3f7;
+}
+
+/* ── About Cards ── */
+[data-theme="dark"] .about-card {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .about-card:hover {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .about-card h3 {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .about-card p {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .about-main {
+    background: linear-gradient(135deg, #1e3a5f 0%, #1a365d 100%);
+    border: none;
+}
+
+[data-theme="dark"] .about-main h3 {
+    color: #ffffff;
+}
+
+[data-theme="dark"] .about-main p {
+    color: rgba(255, 255, 255, 0.8);
+}
+
+/* ── Feature Cards ── */
+[data-theme="dark"] .feature-card {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .feature-card:hover {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .feature-card::before {
+    background: linear-gradient(90deg, #6ba3f7, #5dc97a);
+}
+
+[data-theme="dark"] .feature-number {
+    color: #374151;
+}
+
+[data-theme="dark"] .feature-icon-wrap {
+    background: rgba(107, 163, 247, 0.12);
+}
+
+[data-theme="dark"] .feature-card h3 {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .feature-card > p {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .feature-list li {
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .feature-list li::before {
+    color: #5dc97a;
+}
+
+/* ── Steps / How-to ── */
+[data-theme="dark"] .steps-timeline::before {
+    background: linear-gradient(to bottom, #6ba3f7, #5dc97a);
+}
+
+[data-theme="dark"] .step-marker {
+    background: #4285f4;
+    box-shadow: 0 0 0 6px #111827, 0 0 0 8px rgba(66, 133, 244, 0.2);
+}
+
+[data-theme="dark"] .step-content {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .step-content:hover {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .step-content h3 {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .step-content > p {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .step-content > p a {
+    color: #6ba3f7;
+}
+
+[data-theme="dark"] .step-detail {
+    background: #111827;
+}
+
+[data-theme="dark"] .step-detail strong {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .step-detail li {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .step-detail li::before {
+    color: #6ba3f7;
+}
+
+[data-theme="dark"] .step-tip {
+    background: rgba(107, 163, 247, 0.08);
+    border-left-color: #6ba3f7;
+}
+
+[data-theme="dark"] .step-example {
+    background: rgba(253, 214, 99, 0.08);
+    border-left-color: #fdd663;
+}
+
+[data-theme="dark"] .step-tip p,
+[data-theme="dark"] .step-example p {
+    color: #d1d5db;
+}
+
+/* ── Curriculum Cards ── */
+[data-theme="dark"] .curriculum-card {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .curriculum-card:hover {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .curriculum-chapter {
+    color: #6ba3f7;
+}
+
+[data-theme="dark"] .curriculum-card h3 {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .curriculum-card > p {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .curriculum-topics li {
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .curriculum-topics li::before {
+    color: #6ba3f7;
+}
+
+[data-theme="dark"] .curriculum-tag {
+    background: rgba(107, 163, 247, 0.12);
+    color: #6ba3f7;
+}
+
+[data-theme="dark"] .curriculum-card-special {
+    background: linear-gradient(135deg, #1a1f2e 0%, #1f2937 100%);
+    border-color: #374151;
+}
+
+/* ── Workflow Cards ── */
+[data-theme="dark"] .workflow-card {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .workflow-card:hover {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .workflow-card h3 {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .workflow-card > p {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .workflow-bad {
+    background: rgba(242, 139, 130, 0.1);
+    border-left-color: #f28b82;
+}
+
+[data-theme="dark"] .workflow-good {
+    background: rgba(93, 201, 122, 0.1);
+    border-left-color: #5dc97a;
+}
+
+[data-theme="dark"] .workflow-bad span {
+    color: #f28b82;
+}
+
+[data-theme="dark"] .workflow-good span {
+    color: #5dc97a;
+}
+
+[data-theme="dark"] .workflow-bad p,
+[data-theme="dark"] .workflow-good p {
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .workflow-table {
+    border-color: #374151;
+}
+
+[data-theme="dark"] .wf-header {
+    background: #111827;
+}
+
+[data-theme="dark"] .wf-header span {
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .wf-row span {
+    border-bottom-color: #374151;
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .wf-a {
+    background: rgba(93, 201, 122, 0.08);
+}
+
+[data-theme="dark"] .wf-a span:first-child {
+    color: #5dc97a;
+}
+
+[data-theme="dark"] .wf-b {
+    background: rgba(107, 163, 247, 0.08);
+}
+
+[data-theme="dark"] .wf-b span:first-child {
+    color: #6ba3f7;
+}
+
+[data-theme="dark"] .wf-c {
+    background: rgba(242, 139, 130, 0.08);
+}
+
+[data-theme="dark"] .wf-c span:first-child {
+    color: #f28b82;
+}
+
+[data-theme="dark"] .persona-chip.vc {
+    background: rgba(253, 214, 99, 0.15);
+    color: #fdd663;
+}
+
+[data-theme="dark"] .persona-chip.customer {
+    background: rgba(107, 163, 247, 0.15);
+    color: #93c5fd;
+}
+
+[data-theme="dark"] .persona-chip.mentor {
+    background: rgba(93, 201, 122, 0.15);
+    color: #6ee7b7;
+}
+
+[data-theme="dark"] .workflow-steps-mini span {
+    background: rgba(107, 163, 247, 0.12);
+    color: #6ba3f7;
+}
+
+/* ── Company Intro ── */
+[data-theme="dark"] .company-info > p {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .company-info .section-title {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .company-services span {
+    background: rgba(107, 163, 247, 0.12);
+    color: #6ba3f7;
+}
+
+[data-theme="dark"] .company-card {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .company-card:hover {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .company-card h4 {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .company-card p {
+    color: #9ca3af;
+}
+
+/* ── Pricing ── */
+[data-theme="dark"] .pricing-card {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .pricing-card:hover {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .pricing-featured {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .pricing-badge {
+    background: #4285f4;
+}
+
+[data-theme="dark"] .pricing-header {
+    border-bottom-color: #374151;
+}
+
+[data-theme="dark"] .pricing-header h3 {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .price {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .period {
+    color: #6b7280;
+}
+
+[data-theme="dark"] .pricing-desc {
+    color: #6b7280;
+}
+
+[data-theme="dark"] .pricing-features li {
+    color: #d1d5db;
+}
+
+[data-theme="dark"] .check {
+    color: #5dc97a;
+}
+
+/* ── FAQ ── */
+[data-theme="dark"] .faq-item {
+    background: #1f2937;
+    border-color: #374151;
+}
+
+[data-theme="dark"] .faq-item:hover {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .faq-item.active {
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .faq-question {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .faq-question:hover {
+    color: #6ba3f7;
+}
+
+[data-theme="dark"] .faq-toggle {
+    color: #4b5563;
+}
+
+[data-theme="dark"] .faq-item.active .faq-toggle {
+    color: #6ba3f7;
+}
+
+[data-theme="dark"] .faq-answer p {
+    color: #9ca3af;
+}
+
+[data-theme="dark"] .faq-answer a {
+    color: #6ba3f7;
+}
+
+/* ── CTA ── */
+[data-theme="dark"] .cta-section {
+    background: linear-gradient(135deg, #0f172a 0%, #1e1b4b 100%);
+}
+
+[data-theme="dark"] .cta-content h2 {
+    color: #f3f4f6;
+}
+
+[data-theme="dark"] .cta-content p {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+[data-theme="dark"] .cta-actions .btn-primary {
+    background: #4285f4;
+    border-color: #4285f4;
+}
+
+[data-theme="dark"] .cta-actions .btn-primary:hover {
+    background: #3367d6;
+    border-color: #3367d6;
+}
+
+/* ── Buttons ── */
+[data-theme="dark"] .btn-primary {
+    background: #4285f4;
+    border-color: #4285f4;
+}
+
+[data-theme="dark"] .btn-primary:hover {
+    background: #3367d6;
+    border-color: #3367d6;
+    box-shadow: 0 8px 25px rgba(66, 133, 244, 0.3);
+}
+
+[data-theme="dark"] .btn-outline {
+    color: #6ba3f7;
+    border-color: #6ba3f7;
+}
+
+[data-theme="dark"] .btn-outline:hover {
+    background: #6ba3f7;
+    color: #111827;
+}
