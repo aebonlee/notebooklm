@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://templete.dreamitbiz.com/sitemap.xml
+Sitemap: https://notebooklm.dreamitbiz.com/sitemap.xml
