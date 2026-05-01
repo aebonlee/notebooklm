@@ -103,9 +103,9 @@ const Features = (): ReactElement => {
       {/* page-header */}
       <section className="page-header">
         <div className="container">
-          <span className="section-badge">FEATURES</span>
-          <h1 className="section-title">Studio 패널 기능</h1>
-          <p className="section-desc">같은 자료를 다양한 형태로 가공하는 NotebookLM의 핵심 기능</p>
+          <span className="page-badge">FEATURES</span>
+          <h1 className="page-title">Studio 패널 기능</h1>
+          <p className="page-description">같은 자료를 다양한 형태로 가공하는 NotebookLM의 핵심 기능</p>
         </div>
       </section>
 

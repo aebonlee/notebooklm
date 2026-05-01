@@ -71,9 +71,9 @@ const Consulting = (): ReactElement => {
       {/* page-header */}
       <section className="page-header">
         <div className="container">
-          <span className="section-badge">TRAINING & CONSULTING</span>
-          <h1 className="section-title">교육 & 컨설팅</h1>
-          <p className="section-desc">DreamIT Biz와 함께 NotebookLM을 실무에 적용하세요</p>
+          <span className="page-badge">TRAINING & CONSULTING</span>
+          <h1 className="page-title">교육 & 컨설팅</h1>
+          <p className="page-description">DreamIT Biz와 함께 NotebookLM을 실무에 적용하세요</p>
         </div>
       </section>
 

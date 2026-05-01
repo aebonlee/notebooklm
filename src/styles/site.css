@@ -32,6 +32,20 @@
     --nlm-transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
 }
 
+/* ── Page Header (dark gradient bg) ── */
+.page-badge {
+    display: inline-block;
+    padding: 6px 18px;
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.9);
+    border: 1px solid rgba(255, 255, 255, 0.25);
+    border-radius: var(--nlm-radius-full);
+    font-size: 0.8rem;
+    font-weight: 700;
+    letter-spacing: 1.5px;
+    margin-bottom: 16px;
+}
+
 /* ── Buttons ── */
 .btn {
     display: inline-flex;
@@ -252,6 +266,10 @@
     display: grid;
     grid-template-columns: repeat(2, 1fr);
     gap: 24px;
+}
+
+.about-grid-3 {
+    grid-template-columns: repeat(3, 1fr);
 }
 
 .about-card {
@@ -1341,6 +1359,24 @@
     border-bottom: none;
 }
 
+/* ── Overview Chips (Curriculum page) ── */
+.overview-chips {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 20px;
+}
+
+.overview-chip {
+    display: inline-block;
+    padding: 8px 18px;
+    background: rgba(255, 255, 255, 0.2);
+    color: rgba(255, 255, 255, 0.95);
+    border-radius: var(--nlm-radius-full);
+    font-size: 0.85rem;
+    font-weight: 600;
+}
+
 /* ── Curriculum Expand Cards (Curriculum page) ── */
 .curriculum-detail-list {
     display: flex;
@@ -1698,6 +1734,9 @@
     .curriculum-grid {
         grid-template-columns: repeat(2, 1fr);
     }
+    .about-grid-3 {
+        grid-template-columns: repeat(2, 1fr);
+    }
     .home-preview-grid {
         grid-template-columns: repeat(2, 1fr);
     }
@@ -1713,7 +1752,8 @@
 }
 
 @media (max-width: 768px) {
-    .about-grid {
+    .about-grid,
+    .about-grid-3 {
         grid-template-columns: 1fr;
     }
     .features-grid {
@@ -2363,6 +2403,13 @@
     color: #111827;
 }
 
+/* ── Dark: Page Badge ── */
+[data-theme="dark"] .page-badge {
+    background: rgba(255, 255, 255, 0.1);
+    color: rgba(255, 255, 255, 0.8);
+    border-color: rgba(255, 255, 255, 0.2);
+}
+
 /* ── Dark: Home Preview Cards ── */
 [data-theme="dark"] .home-preview-card {
     background: #1f2937;
@@ -2442,6 +2489,12 @@
 
 [data-theme="dark"] .comp-even {
     background: #1a1f2e;
+}
+
+/* ── Dark: Overview Chips ── */
+[data-theme="dark"] .overview-chip {
+    background: rgba(255, 255, 255, 0.15);
+    color: rgba(255, 255, 255, 0.85);
 }
 
 /* ── Dark: Curriculum Expand ── */

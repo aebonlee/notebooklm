@@ -110,9 +110,9 @@ const Techniques = (): ReactElement => {
       {/* page-header */}
       <section className="page-header">
         <div className="container">
-          <span className="section-badge">KEY TECHNIQUES</span>
-          <h1 className="section-title">교육 핵심 기법</h1>
-          <p className="section-desc">DreamIT Biz 교육 과정에서 배우는 NotebookLM 실전 기법</p>
+          <span className="page-badge">KEY TECHNIQUES</span>
+          <h1 className="page-title">교육 핵심 기법</h1>
+          <p className="page-description">DreamIT Biz 교육 과정에서 배우는 NotebookLM 실전 기법</p>
         </div>
       </section>
 

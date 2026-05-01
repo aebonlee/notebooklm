@@ -113,9 +113,9 @@ const Curriculum = (): ReactElement => {
       {/* page-header */}
       <section className="page-header">
         <div className="container">
-          <span className="section-badge">CURRICULUM</span>
-          <h1 className="section-title">7개 챕터 교육 과정</h1>
-          <p className="section-desc">DreamIT Biz가 설계한 체계적 NotebookLM 실전 커리큘럼</p>
+          <span className="page-badge">CURRICULUM</span>
+          <h1 className="page-title">7개 챕터 교육 과정</h1>
+          <p className="page-description">DreamIT Biz가 설계한 체계적 NotebookLM 실전 커리큘럼</p>
         </div>
       </section>
 
@@ -126,10 +126,10 @@ const Curriculum = (): ReactElement => {
             <div className="about-icon">📚</div>
             <h3>과정 개요</h3>
             <p>이 교육 과정은 NotebookLM을 처음 접하는 분부터 사업계획서와 IR Deck을 완성해야 하는 실무자까지, <strong>7단계에 걸쳐 체계적으로 학습</strong>할 수 있도록 설계되었습니다.</p>
-            <div className="overview-chips" style={{ display: 'flex', flexWrap: 'wrap', gap: '12px', marginTop: '20px' }}>
-              <span className="curriculum-tag" style={{ fontSize: '0.85rem', padding: '8px 18px' }}>대상: 창업자, 연구자, 학생, 기업 실무자</span>
-              <span className="curriculum-tag" style={{ fontSize: '0.85rem', padding: '8px 18px' }}>선수지식: 없음 (Google 계정만 필요)</span>
-              <span className="curriculum-tag" style={{ fontSize: '0.85rem', padding: '8px 18px' }}>완성 산출물: 사업계획서 + IR Deck 10슬라이드</span>
+            <div className="overview-chips">
+              <span className="overview-chip">대상: 창업자, 연구자, 학생, 기업 실무자</span>
+              <span className="overview-chip">선수지식: 없음 (Google 계정만 필요)</span>
+              <span className="overview-chip">완성 산출물: 사업계획서 + IR Deck 10슬라이드</span>
             </div>
           </div>
         </div>
@@ -186,7 +186,7 @@ const Curriculum = (): ReactElement => {
                       </div>
                     </div>
                   </div>
-                  <ul className="curriculum-topics" style={{ marginTop: '16px' }}>
+                  <ul className="curriculum-topics mt-2">
                     {c.topics.map((t, j) => <li key={j}>{t}</li>)}
                   </ul>
                 </div>

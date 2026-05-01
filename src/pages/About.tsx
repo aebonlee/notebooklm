@@ -76,9 +76,9 @@ const About = (): ReactElement => {
       {/* page-header */}
       <section className="page-header">
         <div className="container">
-          <span className="section-badge">ABOUT</span>
-          <h1 className="section-title">NotebookLM이란?</h1>
-          <p className="section-desc">Google Gemini 기반의 AI 리서치 도구 — 내 자료만 학습하는 나만의 AI 비서</p>
+          <span className="page-badge">ABOUT</span>
+          <h1 className="page-title">NotebookLM이란?</h1>
+          <p className="page-description">Google Gemini 기반의 AI 리서치 도구 — 내 자료만 학습하는 나만의 AI 비서</p>
         </div>
       </section>
 
@@ -104,7 +104,7 @@ const About = (): ReactElement => {
             <h2 className="section-title">NotebookLM의 3가지 차별점</h2>
             <p className="section-desc">다른 AI 도구와 무엇이 다른가요?</p>
           </div>
-          <div className="about-grid">
+          <div className="about-grid about-grid-3">
             {aboutCards.map((card, i) => (
               <div className="about-card fade-in" key={i} ref={setFadeRef}>
                 <div className="about-icon">{card.icon}</div>
