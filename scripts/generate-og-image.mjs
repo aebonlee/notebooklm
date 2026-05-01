@@ -28,11 +28,11 @@ const OUTPUT = resolve(__dirname, '..', 'public', 'og-image.png');
 
 // ── 설정 (site.ts와 맞추세요) ──────────────────────────────
 const CONFIG = {
-  siteName: 'DreamIT',         // 큰 글씨 (사이트 영문명)
-  siteNameKo: '드림아이티',     // 작은 글씨 (사이트 한국어명)
-  tagline: 'DreamIT Biz',     // 하단 태그라인
-  primaryColor: '#0046C8',     // 메인 컬러 (dark blue)
-  darkColor: '#002E8A',        // 그라데이션 끝 컬러
+  siteName: 'NotebookLM',         // 큰 글씨 (사이트 영문명)
+  siteNameKo: 'NotebookLM 학습 센터',     // 작은 글씨 (사이트 한국어명)
+  tagline: 'DreamIT Biz × Google NotebookLM',     // 하단 태그라인
+  primaryColor: '#4285f4',     // 메인 컬러 (dark blue)
+  darkColor: '#1a1a2e',        // 그라데이션 끝 컬러
   width: 1200,
   height: 630,
 };
@@ -89,7 +89,7 @@ function buildSVG(cfg) {
 
   <!-- URL -->
   <text x="${width - 80}" y="${height - 30}" font-family="monospace" font-size="14" fill="rgba(255,255,255,0.5)" text-anchor="end">
-    dreamitbiz.com
+    notebooklm.dreamitbiz.com
   </text>
 </svg>`;
 }
