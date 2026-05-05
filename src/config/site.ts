@@ -55,6 +55,7 @@ const site: SiteConfig = {
   menuItems: [
     {
       path: '#',
+      activePath: '/about',
       labelKey: 'site.nav.intro',
       dropdown: [
         { path: '/about', labelKey: 'site.nav.about' },
@@ -64,6 +65,7 @@ const site: SiteConfig = {
     },
     {
       path: '#',
+      activePath: '/curriculum',
       labelKey: 'site.nav.curriculum',
       dropdown: [
         { path: '/curriculum', labelKey: 'site.nav.curriculumOverview' },
@@ -80,6 +82,7 @@ const site: SiteConfig = {
     { path: '/use-cases', labelKey: 'site.nav.useCases' },
     {
       path: '#',
+      activePath: '/consulting',
       labelKey: 'site.nav.training',
       dropdown: [
         { path: '/consulting', labelKey: 'site.nav.consulting' },
@@ -89,6 +92,7 @@ const site: SiteConfig = {
     },
     {
       path: '#',
+      activePath: '/community',
       labelKey: 'site.nav.community',
       dropdown: [
         { path: '/community/board', labelKey: 'site.nav.board' },
