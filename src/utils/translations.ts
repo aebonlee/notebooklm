@@ -173,12 +173,28 @@ export const translations: Record<string, Record<string, unknown>> = {
     // ─── 사이트 전용 키 ───
     site: {
       nav: {
-        about: '소개',
-        features: '주요 기능',
-        curriculum: '커리큘럼',
-        workflow: '실전 기법',
-        consulting: '교육&컨설팅',
-        faq: 'FAQ'
+        intro: '소개',
+        about: 'NotebookLM이란?',
+        features: 'Studio 기능',
+        guide: '시작 가이드',
+        curriculum: '교육과정',
+        curriculumOverview: '커리큘럼 개요',
+        ch1: 'CH.1 기본기',
+        ch2: 'CH.2 자료수집',
+        ch3: 'CH.3 자료검증',
+        ch4: 'CH.4 시장분석',
+        ch5: 'CH.5 사업계획서',
+        ch6: 'CH.6 IR Deck',
+        ch7: 'CH.7 실전발표',
+        workflow: '핵심기법',
+        useCases: '활용사례',
+        training: '교육신청',
+        consulting: '교육 프로그램',
+        resources: '자료실',
+        faq: 'FAQ',
+        community: '커뮤니티',
+        board: '자유게시판',
+        gallery: '갤러리'
       },
       home: {
         title: 'NotebookLM 학습 센터',
@@ -189,7 +205,12 @@ export const translations: Record<string, Record<string, unknown>> = {
         features: { title: 'Studio 패널 기능', subtitle: 'NotebookLM의 핵심 기능 상세' },
         curriculum: { title: '7개 챕터 교육 과정', subtitle: '체계적 NotebookLM 실전 커리큘럼' },
         techniques: { title: '교육 핵심 기법', subtitle: 'NotebookLM 실전 기법' },
-        consulting: { title: '교육 & 컨설팅', subtitle: 'DreamIT Biz 교육 프로그램' }
+        consulting: { title: '교육 & 컨설팅', subtitle: 'DreamIT Biz 교육 프로그램' },
+        guide: { title: '시작 가이드', subtitle: 'NotebookLM 첫걸음' },
+        useCases: { title: '활용사례', subtitle: '실전 활용 시나리오' },
+        resources: { title: '자료실', subtitle: '교육 자료 다운로드' },
+        board: { title: '자유게시판', subtitle: '커뮤니티 소통 공간' },
+        gallery: { title: '갤러리', subtitle: '작업물 공유' }
       }
     }
   },
@@ -368,12 +389,28 @@ export const translations: Record<string, Record<string, unknown>> = {
     // ─── Site-specific keys ───
     site: {
       nav: {
-        about: 'About',
-        features: 'Features',
+        intro: 'About',
+        about: 'What is NotebookLM?',
+        features: 'Studio Features',
+        guide: 'Getting Started',
         curriculum: 'Curriculum',
+        curriculumOverview: 'Overview',
+        ch1: 'CH.1 Basics',
+        ch2: 'CH.2 Collection',
+        ch3: 'CH.3 Verification',
+        ch4: 'CH.4 Market Analysis',
+        ch5: 'CH.5 Business Plan',
+        ch6: 'CH.6 IR Deck',
+        ch7: 'CH.7 Pitch',
         workflow: 'Techniques',
-        consulting: 'Training',
-        faq: 'FAQ'
+        useCases: 'Use Cases',
+        training: 'Training',
+        consulting: 'Programs',
+        resources: 'Resources',
+        faq: 'FAQ',
+        community: 'Community',
+        board: 'Board',
+        gallery: 'Gallery'
       },
       home: {
         title: 'NotebookLM Learning Center',
@@ -384,7 +421,12 @@ export const translations: Record<string, Record<string, unknown>> = {
         features: { title: 'Studio Panel Features', subtitle: 'Key features of NotebookLM in detail' },
         curriculum: { title: '7-Chapter Curriculum', subtitle: 'Systematic NotebookLM training course' },
         techniques: { title: 'Key Techniques', subtitle: 'Practical NotebookLM techniques' },
-        consulting: { title: 'Training & Consulting', subtitle: 'DreamIT Biz training programs' }
+        consulting: { title: 'Training & Consulting', subtitle: 'DreamIT Biz training programs' },
+        guide: { title: 'Getting Started', subtitle: 'Your first steps with NotebookLM' },
+        useCases: { title: 'Use Cases', subtitle: 'Real-world scenarios' },
+        resources: { title: 'Resources', subtitle: 'Download training materials' },
+        board: { title: 'Board', subtitle: 'Community discussion' },
+        gallery: { title: 'Gallery', subtitle: 'Share your work' }
       }
     }
   }

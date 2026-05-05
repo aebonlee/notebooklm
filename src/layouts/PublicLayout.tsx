@@ -1,6 +1,7 @@
 import { lazy, Suspense, useEffect, type ReactElement } from 'react';
 import { Routes, Route, useLocation } from 'react-router-dom';
 import AuthGuard from '../components/AuthGuard';
+import AdminGuard from '../components/AdminGuard';
 import Navbar from '../components/layout/Navbar';
 import Footer from '../components/layout/Footer';
 import site from '../config/site';
@@ -12,7 +13,28 @@ const Features = lazy(() => import('../pages/Features'));
 const Curriculum = lazy(() => import('../pages/Curriculum'));
 const Techniques = lazy(() => import('../pages/Techniques'));
 const Consulting = lazy(() => import('../pages/Consulting'));
+const Guide = lazy(() => import('../pages/Guide'));
+const UseCases = lazy(() => import('../pages/UseCases'));
+const Resources = lazy(() => import('../pages/Resources'));
 const NotFound = lazy(() => import('../pages/NotFound'));
+
+// Chapter pages
+const Chapter1 = lazy(() => import('../pages/curriculum/Chapter1'));
+const Chapter2 = lazy(() => import('../pages/curriculum/Chapter2'));
+const Chapter3 = lazy(() => import('../pages/curriculum/Chapter3'));
+const Chapter4 = lazy(() => import('../pages/curriculum/Chapter4'));
+const Chapter5 = lazy(() => import('../pages/curriculum/Chapter5'));
+const Chapter6 = lazy(() => import('../pages/curriculum/Chapter6'));
+const Chapter7 = lazy(() => import('../pages/curriculum/Chapter7'));
+
+// Community pages
+const Board = lazy(() => import('../pages/community/Board'));
+const BoardDetail = lazy(() => import('../pages/community/BoardDetail'));
+const BoardWrite = lazy(() => import('../pages/community/BoardWrite'));
+const Gallery = lazy(() => import('../pages/community/Gallery'));
+
+// Admin
+const AdminDashboard = lazy(() => import('../pages/admin/AdminDashboard'));
 
 // Auth 페이지 (features.auth로 토글)
 const Login = lazy(() => import('../pages/Login'));
@@ -64,6 +86,31 @@ const PublicLayout = (): ReactElement => {
             <Route path="/curriculum" element={<Curriculum />} />
             <Route path="/techniques" element={<Techniques />} />
             <Route path="/consulting" element={<Consulting />} />
+            <Route path="/guide" element={<Guide />} />
+            <Route path="/use-cases" element={<UseCases />} />
+            <Route path="/resources" element={<Resources />} />
+
+            {/* Chapter pages */}
+            <Route path="/curriculum/ch1" element={<Chapter1 />} />
+            <Route path="/curriculum/ch2" element={<Chapter2 />} />
+            <Route path="/curriculum/ch3" element={<Chapter3 />} />
+            <Route path="/curriculum/ch4" element={<Chapter4 />} />
+            <Route path="/curriculum/ch5" element={<Chapter5 />} />
+            <Route path="/curriculum/ch6" element={<Chapter6 />} />
+            <Route path="/curriculum/ch7" element={<Chapter7 />} />
+
+            {/* Community */}
+            {site.features.community && (
+              <>
+                <Route path="/community/board" element={<Board />} />
+                <Route path="/community/board/:id" element={<BoardDetail />} />
+                <Route path="/community/board/write" element={<AuthGuard><BoardWrite /></AuthGuard>} />
+                <Route path="/community/gallery" element={<Gallery />} />
+              </>
+            )}
+
+            {/* Admin */}
+            <Route path="/admin" element={<AdminGuard><AdminDashboard /></AdminGuard>} />
 
             {/* Auth */}
             {site.features.auth && (

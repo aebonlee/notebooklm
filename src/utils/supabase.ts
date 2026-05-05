@@ -9,6 +9,9 @@ const supabaseAnonKey = import.meta.env.VITE_SUPABASE_ANON_KEY;
 export const TABLES = {
   orders: `${site.dbPrefix}orders`,
   order_items: `${site.dbPrefix}order_items`,
+  board_posts: `${site.dbPrefix}board_posts`,
+  gallery_items: `${site.dbPrefix}gallery_items`,
+  resources: `${site.dbPrefix}resources`,
 } as const;
 
 // Supabase client - initialized only when env vars are set

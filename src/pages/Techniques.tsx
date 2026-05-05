@@ -198,6 +198,54 @@ const Techniques = (): ReactElement => {
         </div>
       </section>
 
+      {/* Section 3: 요약 테이블 */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-badge">SUMMARY</span>
+            <h2 className="section-title">기법 요약 & 난이도</h2>
+            <p className="section-desc">각 기법의 난이도와 관련 챕터를 확인하세요</p>
+          </div>
+          <div className="comparison-table fade-in" ref={setFadeRef}>
+            <div className="comp-row comp-header">
+              <span>기법</span>
+              <span>난이도</span>
+              <span>관련 챕터</span>
+            </div>
+            <div className="comp-row">
+              <span>딥리서치 질문 설계</span>
+              <span><span className="difficulty-badge easy">초급</span></span>
+              <span><Link to="/curriculum/ch2">CH.2</Link></span>
+            </div>
+            <div className="comp-row comp-even">
+              <span>자료 신뢰도 등급제</span>
+              <span><span className="difficulty-badge easy">초급</span></span>
+              <span><Link to="/curriculum/ch2">CH.2</Link></span>
+            </div>
+            <div className="comp-row">
+              <span>출처 있는 페르소나</span>
+              <span><span className="difficulty-badge medium">중급</span></span>
+              <span><Link to="/curriculum/ch3">CH.3</Link></span>
+            </div>
+            <div className="comp-row comp-even">
+              <span>다각도 페르소나 검증</span>
+              <span><span className="difficulty-badge medium">중급</span></span>
+              <span><Link to="/curriculum/ch4">CH.4</Link></span>
+            </div>
+            <div className="comp-row">
+              <span>사업계획서 7절 구조</span>
+              <span><span className="difficulty-badge hard">고급</span></span>
+              <span><Link to="/curriculum/ch6">CH.6</Link></span>
+            </div>
+            <div className="comp-row comp-even">
+              <span>IR Deck 10슬라이드</span>
+              <span><span className="difficulty-badge hard">고급</span></span>
+              <span><Link to="/curriculum/ch6">CH.6</Link></span>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="section cta-section">
         <div className="container">

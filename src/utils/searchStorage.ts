@@ -1,6 +1,6 @@
 /**
  * searchStorage.ts
- * 통합 검색 — blog/board/gallery ilike 병렬 검색
+ * 통합 검색 — board/gallery ilike 병렬 검색 (nlm_ prefix)
  */
 
 import type { SearchResults, SearchResultItem } from '../types';
@@ -20,7 +20,7 @@ function toCamel(row: Record<string, unknown> | null): SearchResultItem | null {
 }
 
 /**
- * 통합 검색: blog_posts, board_posts, gallery_items에서 ilike 병렬 검색
+ * 통합 검색: nlm_board_posts, nlm_gallery_items에서 ilike 병렬 검색
  */
 export async function searchAll(query: string): Promise<SearchResults> {
   const client = getSupabase();
@@ -30,29 +30,23 @@ export async function searchAll(query: string): Promise<SearchResults> {
 
   const pattern = `%${query.trim()}%`;
 
-  const [blogRes, boardRes, galleryRes] = await Promise.all([
+  const [boardRes, galleryRes] = await Promise.all([
     client
-      .from('blog_posts')
-      .select('id, title, title_en, excerpt, excerpt_en, category, category_en, date')
-      .or(`title.ilike.${pattern},title_en.ilike.${pattern},excerpt.ilike.${pattern},excerpt_en.ilike.${pattern}`)
-      .order('id', { ascending: false })
-      .limit(5),
-    client
-      .from('board_posts')
-      .select('id, title, category, author, date')
+      .from('nlm_board_posts')
+      .select('id, title, category, author_name, created_at')
       .or(`title.ilike.${pattern},content.ilike.${pattern}`)
       .order('id', { ascending: false })
       .limit(5),
     client
-      .from('gallery_items')
-      .select('id, title, title_en, description, description_en, category, date')
-      .or(`title.ilike.${pattern},title_en.ilike.${pattern},description.ilike.${pattern},description_en.ilike.${pattern}`)
+      .from('nlm_gallery_items')
+      .select('id, title, title_en, description, category, date')
+      .or(`title.ilike.${pattern},title_en.ilike.${pattern},description.ilike.${pattern}`)
       .order('id', { ascending: false })
       .limit(5)
   ]);
 
   return {
-    blog: (blogRes.data || []).map(r => toCamel(r as unknown as Record<string, unknown>)!),
+    blog: [],
     board: (boardRes.data || []).map(r => toCamel(r as unknown as Record<string, unknown>)!),
     gallery: (galleryRes.data || []).map(r => toCamel(r as unknown as Record<string, unknown>)!)
   };

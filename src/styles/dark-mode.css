@@ -14,11 +14,11 @@
     --border-medium: #4B5563;
     --glass-bg: rgba(17, 24, 39, 0.85);
     --glass-border: rgba(255, 255, 255, 0.08);
-    /* Brighter primary for dark backgrounds */
-    --primary-blue: #4A8FE7;
-    --primary-blue-dark: #2B6CC4;
-    --primary-blue-light: #93C5FD;
-    --primary-gradient: linear-gradient(135deg, #1A5AC8 0%, #4A8FE7 100%);
+    /* Brighter Google Blue for dark backgrounds */
+    --primary-blue: #6ba3f7;
+    --primary-blue-dark: #4285f4;
+    --primary-blue-light: #a3c4fb;
+    --primary-gradient: linear-gradient(135deg, #3367d6 0%, #6ba3f7 100%);
 }
 
 [data-theme="dark"] .hero,

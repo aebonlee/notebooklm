@@ -205,6 +205,82 @@ const About = (): ReactElement => {
         </div>
       </section>
 
+      {/* Section 5: AI 도구 비교표 */}
+      <section className="section">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-badge">COMPARISON</span>
+            <h2 className="section-title">NotebookLM vs 다른 AI 도구</h2>
+            <p className="section-desc">핵심 차이를 한 눈에 비교하세요</p>
+          </div>
+          <div className="comparison-table fade-in" ref={setFadeRef}>
+            <div className="comp-row comp-header">
+              <span>항목</span>
+              <span>NotebookLM</span>
+              <span>ChatGPT / Claude</span>
+            </div>
+            <div className="comp-row">
+              <span>답변 근거</span>
+              <span>사용자 업로드 자료만</span>
+              <span>학습 데이터 전체</span>
+            </div>
+            <div className="comp-row comp-even">
+              <span>인용 표시</span>
+              <span>모든 문장에 인용 번호</span>
+              <span>없음 또는 제한적</span>
+            </div>
+            <div className="comp-row">
+              <span>환각(Hallucination)</span>
+              <span>매우 낮음 (소스 제한)</span>
+              <span>있을 수 있음</span>
+            </div>
+            <div className="comp-row comp-even">
+              <span>멀티모달 출력</span>
+              <span>팟캐스트, 영상, 슬라���드, 퀴즈</span>
+              <span>텍스트 중심</span>
+            </div>
+            <div className="comp-row">
+              <span>Google 생태계</span>
+              <span>완벽 연동 (Drive, Docs, Sheets)</span>
+              <span>제한적</span>
+            </div>
+            <div className="comp-row comp-even">
+              <span>협업</span>
+              <span>노트북 공유 + Audio 배포</span>
+              <span>대화 공유만 가능</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      {/* Section 6: Google 생태계 상세 */}
+      <section className="section section-alt">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-badge">ECOSYSTEM</span>
+            <h2 className="section-title">Google 생태계 연동</h2>
+            <p className="section-desc">같은 계정, 같은 Drive로 매끄러운 워크플로</p>
+          </div>
+          <div className="about-grid about-grid-3">
+            <div className="about-card fade-in" ref={setFadeRef}>
+              <div className="about-icon">📂</div>
+              <h3>Google Drive</h3>
+              <p>Drive의 문서를 직접 소스로 추가. 별도 업로드 없이 기존 자료 활용.</p>
+            </div>
+            <div className="about-card fade-in" ref={setFadeRef}>
+              <div className="about-icon">📊</div>
+              <h3>Google Sheets</h3>
+              <p>데이터 표를 시트로 내보내기. 경쟁사 비교, 시장 분석 시트 바로 생성.</p>
+            </div>
+            <div className="about-card fade-in" ref={setFadeRef}>
+              <div className="about-icon">📽️</div>
+              <h3>Google Slides</h3>
+              <p>IR Deck과 발표자료를 Slides로 직접 내보내기. 편집부터 발표까지 한 흐름.</p>
+            </div>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="section cta-section">
         <div className="container">

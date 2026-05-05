@@ -21,7 +21,7 @@ const site: SiteConfig = {
     ]
   },
 
-  themeColor: '#0046C8',
+  themeColor: '#4285f4',
 
   company: {
     name: '드림아이티비즈(DreamIT Biz)',
@@ -37,9 +37,9 @@ const site: SiteConfig = {
   },
 
   features: {
-    shop: false,
-    community: false,
-    search: false,
+    shop: true,
+    community: true,
+    search: true,
     auth: true,
     license: false,
   },
@@ -53,20 +53,58 @@ const site: SiteConfig = {
   ],
 
   menuItems: [
-    { path: '/about', labelKey: 'site.nav.about' },
-    { path: '/features', labelKey: 'site.nav.features' },
-    { path: '/curriculum', labelKey: 'site.nav.curriculum' },
+    {
+      path: '#',
+      labelKey: 'site.nav.intro',
+      dropdown: [
+        { path: '/about', labelKey: 'site.nav.about' },
+        { path: '/features', labelKey: 'site.nav.features' },
+        { path: '/guide', labelKey: 'site.nav.guide' },
+      ]
+    },
+    {
+      path: '#',
+      labelKey: 'site.nav.curriculum',
+      dropdown: [
+        { path: '/curriculum', labelKey: 'site.nav.curriculumOverview' },
+        { path: '/curriculum/ch1', labelKey: 'site.nav.ch1' },
+        { path: '/curriculum/ch2', labelKey: 'site.nav.ch2' },
+        { path: '/curriculum/ch3', labelKey: 'site.nav.ch3' },
+        { path: '/curriculum/ch4', labelKey: 'site.nav.ch4' },
+        { path: '/curriculum/ch5', labelKey: 'site.nav.ch5' },
+        { path: '/curriculum/ch6', labelKey: 'site.nav.ch6' },
+        { path: '/curriculum/ch7', labelKey: 'site.nav.ch7' },
+      ]
+    },
     { path: '/techniques', labelKey: 'site.nav.workflow' },
-    { path: '/consulting', labelKey: 'site.nav.consulting' },
-    { path: '/consulting#faq', labelKey: 'site.nav.faq' },
+    { path: '/use-cases', labelKey: 'site.nav.useCases' },
+    {
+      path: '#',
+      labelKey: 'site.nav.training',
+      dropdown: [
+        { path: '/consulting', labelKey: 'site.nav.consulting' },
+        { path: '/resources', labelKey: 'site.nav.resources' },
+        { path: '/consulting#faq', labelKey: 'site.nav.faq' },
+      ]
+    },
+    {
+      path: '#',
+      labelKey: 'site.nav.community',
+      dropdown: [
+        { path: '/community/board', labelKey: 'site.nav.board' },
+        { path: '/community/gallery', labelKey: 'site.nav.gallery' },
+      ]
+    },
   ],
 
   footerLinks: [
     { path: '/', labelKey: 'nav.home' },
     { path: '/about', labelKey: 'site.nav.about' },
     { path: '/curriculum', labelKey: 'site.nav.curriculum' },
+    { path: '/techniques', labelKey: 'site.nav.workflow' },
     { path: '/consulting', labelKey: 'site.nav.consulting' },
-    { path: '/consulting#faq', labelKey: 'site.nav.faq' },
+    { path: '/community/board', labelKey: 'site.nav.board' },
+    { path: '/resources', labelKey: 'site.nav.resources' },
   ],
 
   familySites: [

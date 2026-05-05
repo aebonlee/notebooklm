@@ -210,6 +210,51 @@ const Consulting = (): ReactElement => {
         </div>
       </section>
 
+      {/* Section 6: 문의 폼 */}
+      <section className="section section-alt" id="contact">
+        <div className="container">
+          <div className="section-header">
+            <span className="section-badge">CONTACT</span>
+            <h2 className="section-title">교육 문의</h2>
+            <p className="section-desc">맞춤 교육과 컨설팅을 문의하세요</p>
+          </div>
+          <div className="contact-form-wrap fade-in" ref={setFadeRef}>
+            <form className="contact-form" onSubmit={(e) => { e.preventDefault(); alert('문의가 접수되었습니다. 빠른 시일 내 연락드리겠습니다.'); }}>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="contact-name">이름 / 기업명</label>
+                  <input id="contact-name" type="text" placeholder="홍길동 / 주식회사 OO" required />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="contact-email">이메일</label>
+                  <input id="contact-email" type="email" placeholder="email@example.com" required />
+                </div>
+              </div>
+              <div className="form-row">
+                <div className="form-group">
+                  <label htmlFor="contact-phone">연락처</label>
+                  <input id="contact-phone" type="tel" placeholder="010-0000-0000" />
+                </div>
+                <div className="form-group">
+                  <label htmlFor="contact-program">관심 프로그램</label>
+                  <select id="contact-program">
+                    <option value="4h">4시간 단기 강의</option>
+                    <option value="8h">8시간 실전 과정</option>
+                    <option value="16h">16시간 집중 워크숍</option>
+                    <option value="custom">맞춤형 프로그램</option>
+                  </select>
+                </div>
+              </div>
+              <div className="form-group">
+                <label htmlFor="contact-message">문의 내용</label>
+                <textarea id="contact-message" rows={5} placeholder="교육 인원, 일정, 요구사항 등을 작성해주세요"></textarea>
+              </div>
+              <button type="submit" className="btn btn-primary btn-lg">문의하기</button>
+            </form>
+          </div>
+        </div>
+      </section>
+
       {/* CTA */}
       <section className="section cta-section">
         <div className="container">
