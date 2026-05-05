@@ -1,0 +1,1 @@
+import{j as t}from"./index-DFAXinOq.js";import{C as r}from"./ChapterPage-BwX5RCry.js";import"./SEOHead-CFp_Mcdx.js";import"./chapters-ZWPE2MhM.js";const m=()=>t.jsx(r,{chapterIndex:5});export{m as default};
