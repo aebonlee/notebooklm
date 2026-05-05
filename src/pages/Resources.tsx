@@ -63,7 +63,7 @@ const Resources = (): ReactElement => {
 
   return (
     <>
-      <SEOHead title="자료���" description="NotebookLM 교육 자료 다운로드. PDF, 템플릿, 영상 자료를 무료로 제공합니다." path="/resources" />
+      <SEOHead title="자료실" description="NotebookLM 교육 자료 다운로드. PDF, 템플릿, 영상 자료를 무료로 제공합니다." path="/resources" />
 
       <section className="page-header">
         <div className="container">

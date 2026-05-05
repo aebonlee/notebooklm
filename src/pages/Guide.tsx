@@ -22,7 +22,7 @@ const commonMistakes = [
   { bad: '한 노트북에 모든 주제를 몰아넣기', good: '프로젝트/주제별로 노트북 분리하기' },
   { bad: '막연한 질문 ("이거 어때?")', good: '범위, 형식, 개수를 명시한 구체적 질문' },
   { bad: '인용 번호 확인 없이 답변 그대로 사용', good: '숫자/연도/단위는 반드시 원문 대조' },
-  { bad: '소스 50개를 전부 체크한 채 질문', good: '관련 소스 5~10개만 ��택하여 집중 질문' },
+  { bad: '소스 50개를 전부 체크한 채 질문', good: '관련 소스 5~10개만 선택하여 집중 질문' },
 ];
 
 const Guide = (): ReactElement => {
@@ -58,7 +58,7 @@ const Guide = (): ReactElement => {
         <div className="container">
           <span className="page-badge">GETTING STARTED</span>
           <h1 className="page-title">시작 가이드</h1>
-          <p className="page-description">NotebookLM을 처음 사용하는 분을 위한 빠른 시�� 안내</p>
+          <p className="page-description">NotebookLM을 처음 사용하는 분을 위한 빠른 시작 안내</p>
         </div>
       </section>
 
@@ -109,7 +109,7 @@ const Guide = (): ReactElement => {
         <div className="container">
           <div className="section-header">
             <span className="section-badge">AVOID</span>
-            <h2 className="section-title">���한 실수 & 올바른 방법</h2>
+            <h2 className="section-title">흔한 실수 & 올바른 방법</h2>
           </div>
           <div className="mistakes-grid fade-in" ref={setFadeRef}>
             <div className="mistakes-header">

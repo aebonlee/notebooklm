@@ -47,13 +47,13 @@ const Board = (): ReactElement => {
 
   return (
     <>
-      <SEOHead title="자유게시��" description="NotebookLM 학습 커뮤니티. 질문, 팁 공유, 활용 사례를 나눠보세요." path="/community/board" />
+      <SEOHead title="자유게시판" description="NotebookLM 학습 커뮤니티. 질문, 팁 공유, 활용 사례를 나눠보세요." path="/community/board" />
 
       <section className="page-header">
         <div className="container">
           <span className="page-badge">COMMUNITY</span>
           <h1 className="page-title">자유게시판</h1>
-          <p className="page-description">질문, 팁, 활용 사례를 자���롭게 공유하세요</p>
+          <p className="page-description">질문, 팁, 활용 사례를 자유롭게 공유하세요</p>
         </div>
       </section>
 

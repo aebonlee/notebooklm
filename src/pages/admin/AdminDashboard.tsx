@@ -207,7 +207,7 @@ const AdminDashboard = (): ReactElement => {
             <div className="admin-table-wrap">
               <table className="admin-table">
                 <thead>
-                  <tr><th>ID</th><th>제목</th><th>��테고리</th><th>활성</th><th>액션</th></tr>
+                  <tr><th>ID</th><th>제목</th><th>카테고리</th><th>활성</th><th>액션</th></tr>
                 </thead>
                 <tbody>
                   {resources.map((r, i) => (

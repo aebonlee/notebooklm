@@ -236,7 +236,7 @@ const About = (): ReactElement => {
             </div>
             <div className="comp-row comp-even">
               <span>멀티모달 출력</span>
-              <span>팟캐스트, 영상, 슬라���드, 퀴즈</span>
+              <span>팟캐스트, 영상, 슬라이드, 퀴즈</span>
               <span>텍스트 중심</span>
             </div>
             <div className="comp-row">
