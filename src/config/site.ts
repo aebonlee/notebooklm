@@ -76,15 +76,22 @@ const site: SiteConfig = {
         { path: '/curriculum/ch7', labelKey: 'site.nav.ch7' },
       ]
     },
-    { path: '/techniques', labelKey: 'site.nav.workflow' },
-    { path: '/use-cases', labelKey: 'site.nav.useCases' },
+    {
+      path: '#',
+      activePath: '/techniques',
+      labelKey: 'site.nav.learningMaterials',
+      dropdown: [
+        { path: '/techniques', labelKey: 'site.nav.workflow' },
+        { path: '/use-cases', labelKey: 'site.nav.useCases' },
+        { path: '/resources', labelKey: 'site.nav.resources' },
+      ]
+    },
     {
       path: '#',
       activePath: '/consulting',
       labelKey: 'site.nav.training',
       dropdown: [
         { path: '/consulting', labelKey: 'site.nav.consulting' },
-        { path: '/resources', labelKey: 'site.nav.resources' },
         { path: '/consulting#faq', labelKey: 'site.nav.faq' },
       ]
     },
@@ -104,6 +111,7 @@ const site: SiteConfig = {
     { path: '/about', labelKey: 'site.nav.about' },
     { path: '/curriculum', labelKey: 'site.nav.curriculum' },
     { path: '/techniques', labelKey: 'site.nav.workflow' },
+    { path: '/use-cases', labelKey: 'site.nav.useCases' },
     { path: '/consulting', labelKey: 'site.nav.consulting' },
     { path: '/community/board', labelKey: 'site.nav.board' },
     { path: '/resources', labelKey: 'site.nav.resources' },
