@@ -9,33 +9,11 @@ import type { ReactElement } from 'react';
 const Curriculum = (): ReactElement => {
   const [activeSection, setActiveSection] = useState('overview');
   const location = useLocation();
-  const fadeRefs = useRef<(HTMLElement | null)[]>([]);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
-  const setFadeRef = useCallback((el: HTMLElement | null) => {
-    if (el && !fadeRefs.current.includes(el)) {
-      fadeRefs.current.push(el);
-    }
-  }, []);
-
-  const setSectionRef = useCallback((id: string) => (el: HTMLElement | null) => {
+  const setRef = useCallback((id: string) => (el: HTMLElement | null) => {
     sectionRefs.current[id] = el;
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-    fadeRefs.current.forEach((el) => { if (el) observer.observe(el); });
-    return () => observer.disconnect();
+    if (el) el.classList.add('visible');
   }, []);
 
   /* Intersection-based active section tracking */
@@ -108,7 +86,7 @@ const Curriculum = (): ReactElement => {
             {/* Right Content */}
             <div className="curriculum-main">
               {/* Overview */}
-              <div id="overview" ref={setSectionRef('overview')} className="curriculum-section fade-in" ref-fade={setFadeRef}>
+              <div id="overview" ref={setRef('overview')} className="curriculum-section">
                 <h2 className="curriculum-section-title">과정 개요</h2>
                 <p className="curriculum-section-desc">
                   이 교육 과정은 NotebookLM을 처음 접하는 분부터 사업계획서와 IR Deck을 완성해야 하는 실무자까지,
@@ -136,7 +114,7 @@ const Curriculum = (): ReactElement => {
 
               {/* Chapters */}
               {chapters.map((c) => (
-                <div id={`ch${c.num}`} key={c.num} ref={setSectionRef(`ch${c.num}`)} className="curriculum-section fade-in" ref-fade={setFadeRef}>
+                <div id={`ch${c.num}`} key={c.num} ref={setRef(`ch${c.num}`)} className="curriculum-section">
                   <div className="curriculum-section-header">
                     <span className="curriculum-ch-badge">{c.ch}</span>
                     <span className="curriculum-ch-tag">{c.tag}</span>
@@ -187,7 +165,7 @@ const Curriculum = (): ReactElement => {
               ))}
 
               {/* Flow */}
-              <div id="flow" ref={setSectionRef('flow')} className="curriculum-section fade-in" ref-fade={setFadeRef}>
+              <div id="flow" ref={setRef('flow')} className="curriculum-section">
                 <h2 className="curriculum-section-title">학습 흐름</h2>
                 <p className="curriculum-section-desc">CH.1부터 CH.7까지 단계별로 역량이 쌓입니다</p>
                 <div className="learning-flow">

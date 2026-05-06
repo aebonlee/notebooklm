@@ -113,7 +113,7 @@ const Guide = (): ReactElement => {
             {/* Right Content */}
             <div className="page-main">
               {/* 첫 노트북 만들기 */}
-              <div id="setup" ref={setSectionRef('setup')} className="content-section fade-in" ref-fade={setFadeRef}>
+              <div id="setup" ref={setSectionRef('setup')} className="content-section">
                 <span className="content-section-badge">SETUP</span>
                 <h2 className="content-section-title">첫 노트북 만들기</h2>
                 <p className="content-section-desc">4단계로 바로 시작할 수 있습니다</p>
@@ -131,7 +131,7 @@ const Guide = (): ReactElement => {
               </div>
 
               {/* 초보자 팁 */}
-              <div id="tips" ref={setSectionRef('tips')} className="content-section fade-in" ref-fade={setFadeRef}>
+              <div id="tips" ref={setSectionRef('tips')} className="content-section">
                 <span className="content-section-badge">TIPS</span>
                 <h2 className="content-section-title">초보자 필수 팁 5가지</h2>
                 <p className="content-section-desc">처음부터 알았으면 좋았을 핵심 노하우</p>
@@ -147,7 +147,7 @@ const Guide = (): ReactElement => {
               </div>
 
               {/* 흔한 실수 */}
-              <div id="mistakes" ref={setSectionRef('mistakes')} className="content-section fade-in" ref-fade={setFadeRef}>
+              <div id="mistakes" ref={setSectionRef('mistakes')} className="content-section">
                 <span className="content-section-badge">AVOID</span>
                 <h2 className="content-section-title">흔한 실수 & 올바른 방법</h2>
                 <div className="mistakes-grid fade-in" ref={setFadeRef}>

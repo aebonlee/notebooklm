@@ -130,7 +130,7 @@ const About = (): ReactElement => {
             {/* Right Content */}
             <div className="page-main">
               {/* 핵심 개념 */}
-              <div id="concept" ref={setSectionRef('concept')} className="content-section fade-in" ref-fade={setFadeRef}>
+              <div id="concept" ref={setSectionRef('concept')} className="content-section">
                 <span className="content-section-badge">CORE CONCEPT</span>
                 <h2 className="content-section-title">내 자료만 근거로 답하는 AI</h2>
                 <p className="content-section-desc">
@@ -142,7 +142,7 @@ const About = (): ReactElement => {
               </div>
 
               {/* 3가지 차별점 */}
-              <div id="differentiators" ref={setSectionRef('differentiators')} className="content-section fade-in" ref-fade={setFadeRef}>
+              <div id="differentiators" ref={setSectionRef('differentiators')} className="content-section">
                 <span className="content-section-badge">DIFFERENTIATORS</span>
                 <h2 className="content-section-title">NotebookLM의 3가지 차별점</h2>
                 <p className="content-section-desc">다른 AI 도구와 무엇이 다른가요?</p>
@@ -158,7 +158,7 @@ const About = (): ReactElement => {
               </div>
 
               {/* 사용법 3단계 */}
-              <div id="how-to-use" ref={setSectionRef('how-to-use')} className="content-section fade-in" ref-fade={setFadeRef}>
+              <div id="how-to-use" ref={setSectionRef('how-to-use')} className="content-section">
                 <span className="content-section-badge">HOW TO USE</span>
                 <h2 className="content-section-title">NotebookLM 사용법</h2>
                 <p className="content-section-desc">소스 → 채팅 → Studio, 세 칸의 흐름을 기억하세요</p>
@@ -219,7 +219,7 @@ const About = (): ReactElement => {
               </div>
 
               {/* 추천 대상 */}
-              <div id="target" ref={setSectionRef('target')} className="content-section fade-in" ref-fade={setFadeRef}>
+              <div id="target" ref={setSectionRef('target')} className="content-section">
                 <span className="content-section-badge">FOR YOU</span>
                 <h2 className="content-section-title">이런 분께 추천합니다</h2>
                 <p className="content-section-desc">NotebookLM은 자료 기반 작업이 많은 모든 분에게 유용합니다</p>
@@ -235,7 +235,7 @@ const About = (): ReactElement => {
               </div>
 
               {/* AI 도구 비교 */}
-              <div id="comparison" ref={setSectionRef('comparison')} className="content-section fade-in" ref-fade={setFadeRef}>
+              <div id="comparison" ref={setSectionRef('comparison')} className="content-section">
                 <span className="content-section-badge">COMPARISON</span>
                 <h2 className="content-section-title">NotebookLM vs 다른 AI 도구</h2>
                 <p className="content-section-desc">핵심 차이를 한 눈에 비교하세요</p>
@@ -279,7 +279,7 @@ const About = (): ReactElement => {
               </div>
 
               {/* Google 생태계 */}
-              <div id="ecosystem" ref={setSectionRef('ecosystem')} className="content-section fade-in" ref-fade={setFadeRef}>
+              <div id="ecosystem" ref={setSectionRef('ecosystem')} className="content-section">
                 <span className="content-section-badge">ECOSYSTEM</span>
                 <h2 className="content-section-title">Google 생태계 연동</h2>
                 <p className="content-section-desc">같은 계정, 같은 Drive로 매끄러운 워크플로</p>

@@ -134,7 +134,7 @@ const UseCases = (): ReactElement => {
             <div className="page-main">
               {/* 분야별 활용 */}
               {useCaseCategories.map((cat) => (
-                <div id={cat.id} key={cat.id} ref={setSectionRef(cat.id)} className="content-section fade-in" ref-fade={setFadeRef}>
+                <div id={cat.id} key={cat.id} ref={setSectionRef(cat.id)} className="content-section">
                   <span className="content-section-badge">{cat.badge}</span>
                   <h2 className="content-section-title">{cat.title}</h2>
                   <div className="use-cases-grid">
@@ -150,7 +150,7 @@ const UseCases = (): ReactElement => {
               ))}
 
               {/* 실전 시나리오 */}
-              <div id="scenarios" ref={setSectionRef('scenarios')} className="content-section fade-in" ref-fade={setFadeRef}>
+              <div id="scenarios" ref={setSectionRef('scenarios')} className="content-section">
                 <span className="content-section-badge">REAL STORIES</span>
                 <h2 className="content-section-title">실전 시나리오</h2>
                 <p className="content-section-desc">NotebookLM을 활용한 실제 성과 사례</p>

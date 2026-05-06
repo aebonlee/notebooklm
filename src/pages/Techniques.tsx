@@ -93,33 +93,10 @@ const sectionIds = ['overview', 'deep-research', 'trust-grade', 'persona', 'pers
 
 const Techniques = (): ReactElement => {
   const [activeSection, setActiveSection] = useState('overview');
-  const fadeRefs = useRef<(HTMLElement | null)[]>([]);
   const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
-
-  const setFadeRef = useCallback((el: HTMLElement | null) => {
-    if (el && !fadeRefs.current.includes(el)) {
-      fadeRefs.current.push(el);
-    }
-  }, []);
 
   const setSectionRef = useCallback((id: string) => (el: HTMLElement | null) => {
     sectionRefs.current[id] = el;
-  }, []);
-
-  useEffect(() => {
-    const observer = new IntersectionObserver(
-      (entries) => {
-        entries.forEach((entry) => {
-          if (entry.isIntersecting) {
-            entry.target.classList.add('visible');
-            observer.unobserve(entry.target);
-          }
-        });
-      },
-      { threshold: 0.1, rootMargin: '0px 0px -50px 0px' }
-    );
-    fadeRefs.current.forEach((el) => { if (el) observer.observe(el); });
-    return () => observer.disconnect();
   }, []);
 
   useEffect(() => {
@@ -228,7 +205,7 @@ const Techniques = (): ReactElement => {
             {/* Right Content */}
             <div className="page-main">
               {/* 기법 개요 */}
-              <div id="overview" ref={setSectionRef('overview')} className="content-section fade-in" ref-fade={setFadeRef}>
+              <div id="overview" ref={setSectionRef('overview')} className="content-section">
                 <span className="content-section-badge">OVERVIEW</span>
                 <h2 className="content-section-title">왜 기법이 중요한가?</h2>
                 <p className="content-section-desc">
@@ -238,7 +215,7 @@ const Techniques = (): ReactElement => {
 
               {/* 6가지 기법 — 각각 독립 섹션 */}
               {workflowCards.map((w, i) => (
-                <div id={sectionIds[i + 1]} key={i} ref={setSectionRef(sectionIds[i + 1])} className="content-section fade-in" ref-fade={setFadeRef}>
+                <div id={sectionIds[i + 1]} key={i} ref={setSectionRef(sectionIds[i + 1])} className="content-section">
                   <span className="content-section-badge">{`기법 ${i + 1}`}</span>
                   <h2 className="content-section-title">
                     <span style={{ marginRight: '8px' }}>{w.icon}</span>{w.title}
@@ -248,7 +225,7 @@ const Techniques = (): ReactElement => {
               ))}
 
               {/* 요약 & 난이도 */}
-              <div id="summary" ref={setSectionRef('summary')} className="content-section fade-in" ref-fade={setFadeRef}>
+              <div id="summary" ref={setSectionRef('summary')} className="content-section">
                 <span className="content-section-badge">SUMMARY</span>
                 <h2 className="content-section-title">기법 요약 & 난이도</h2>
                 <p className="content-section-desc">각 기법의 난이도와 관련 챕터를 확인하세요</p>
