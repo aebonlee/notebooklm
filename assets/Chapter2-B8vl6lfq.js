@@ -1,0 +1,1 @@
+import{j as t}from"./index-lbTxs-PA.js";import{C as r}from"./ChapterPage-BSTvHQbI.js";import"./SEOHead-D2l3S8JH.js";import"./chapters-ZWPE2MhM.js";const m=()=>t.jsx(r,{chapterIndex:1});export{m as default};
