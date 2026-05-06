@@ -173,7 +173,7 @@ export const translations: Record<string, Record<string, unknown>> = {
     // ─── 사이트 전용 키 ───
     site: {
       nav: {
-        intro: '소개',
+        intro: 'About',
         about: 'NotebookLM이란?',
         features: 'Studio 기능',
         guide: '시작 가이드',

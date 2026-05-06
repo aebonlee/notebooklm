@@ -15,8 +15,6 @@ const site: SiteConfig = {
 
   brand: {
     parts: [
-      { text: 'Dream', className: 'brand-dream' },
-      { text: 'IT', className: 'brand-it' },
       { text: 'NotebookLM', className: 'brand-biz' }
     ]
   },
