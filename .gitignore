@@ -11,3 +11,4 @@ tsconfig.tsbuildinfo
 
 *.pdf
 extract-pdf.js
+nlm-text-*.txt
