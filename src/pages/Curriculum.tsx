@@ -135,7 +135,7 @@ const Curriculum = (): ReactElement => {
                   <div className="curriculum-block">
                     <h4 className="curriculum-block-title">주요 학습 내용</h4>
                     <div className="curriculum-topic-chips">
-                      {c.topics.map((t, j) => <span key={j} className="curriculum-topic-chip">{t}</span>)}
+                      {c.topics.map((t, j) => <span key={j} className="curriculum-topic-chip">{t.title}</span>)}
                     </div>
                   </div>
 
@@ -144,7 +144,7 @@ const Curriculum = (): ReactElement => {
                     <div className="curriculum-block">
                       <h4 className="curriculum-block-title">핵심 활동</h4>
                       <ul className="curriculum-activity-list">
-                        {c.keyActivities.map((a, j) => <li key={j}>{a}</li>)}
+                        {c.keyActivities.map((a, j) => <li key={j}>{a.title}</li>)}
                       </ul>
                     </div>
                     <div className="curriculum-block">
