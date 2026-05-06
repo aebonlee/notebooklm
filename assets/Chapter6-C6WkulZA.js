@@ -1,0 +1,1 @@
+import{j as t}from"./index-HFuJbl0-.js";import{C as r}from"./ChapterPage-CD2YUSF1.js";import"./SEOHead-BD9n5uIm.js";import"./chapters-DIDymAcN.js";const m=()=>t.jsx(r,{chapterIndex:5});export{m as default};
