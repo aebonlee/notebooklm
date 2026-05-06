@@ -1943,6 +1943,61 @@
     font-size: 0.75rem;
 }
 
+/* ── Technique Prompts (copy-paste blocks) ── */
+.technique-prompts {
+    margin-top: 24px;
+    padding-top: 20px;
+    border-top: 1px solid var(--nlm-gray-300);
+}
+.technique-prompts-title {
+    display: block;
+    font-size: 0.95rem;
+    color: var(--nlm-gray-900);
+    margin-bottom: 16px;
+}
+.technique-prompt-block {
+    background: var(--nlm-gray-100);
+    border-left: 3px solid var(--nlm-primary);
+    border-radius: 0 var(--nlm-radius) var(--nlm-radius) 0;
+    padding: 14px 18px;
+    margin-bottom: 12px;
+}
+.technique-prompt-label {
+    display: inline-block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--nlm-primary);
+    background: rgba(66, 133, 244, 0.1);
+    padding: 2px 10px;
+    border-radius: var(--nlm-radius-full);
+    margin-bottom: 8px;
+}
+.technique-prompt-text {
+    font-size: 0.88rem;
+    line-height: 1.7;
+    color: var(--nlm-gray-800);
+    white-space: pre-line;
+    margin: 0;
+}
+
+[data-theme="dark"] .technique-prompts {
+    border-top-color: #374151;
+}
+[data-theme="dark"] .technique-prompts-title {
+    color: #f3f4f6;
+}
+[data-theme="dark"] .technique-prompt-block {
+    background: #111827;
+    border-left-color: var(--nlm-primary-light, #7baaf7);
+}
+[data-theme="dark"] .technique-prompt-label {
+    color: var(--nlm-primary-light, #7baaf7);
+    background: rgba(123, 170, 247, 0.15);
+}
+[data-theme="dark"] .technique-prompt-text {
+    color: #d1d5db;
+}
+
 /* ── Training Programs Grid (Consulting page) ── */
 .training-programs-grid {
     display: grid;

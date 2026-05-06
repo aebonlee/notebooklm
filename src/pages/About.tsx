@@ -43,6 +43,7 @@ const navSections = [
   { id: 'differentiators', label: '3가지 차별점' },
   { id: 'how-to-use', label: '사용법 3단계' },
   { id: 'target', label: '추천 대상' },
+  { id: 'numbers', label: '핵심 숫자' },
   { id: 'comparison', label: 'AI 도구 비교' },
   { id: 'ecosystem', label: 'Google 생태계' },
 ];
@@ -231,6 +232,30 @@ const About = (): ReactElement => {
                       <p>{item.desc}</p>
                     </div>
                   ))}
+                </div>
+              </div>
+
+              {/* 핵심 숫자 */}
+              <div id="numbers" ref={setSectionRef('numbers')} className="content-section">
+                <span className="content-section-badge">KEY NUMBERS</span>
+                <h2 className="content-section-title">알아두면 좋은 핵심 숫자</h2>
+                <p className="content-section-desc">NotebookLM 에센셜 교재 기준 (2026년 4월)</p>
+                <div className="about-grid about-grid-3">
+                  <div className="about-card fade-in" ref={setFadeRef}>
+                    <div className="about-icon">📦</div>
+                    <h3>소스 한도</h3>
+                    <p>무료: 노트북당 <strong>50개</strong><br />Plus: 노트북당 <strong>300개</strong><br />지원 형식: PDF, Docs, URL, YouTube, Word, 텍스트</p>
+                  </div>
+                  <div className="about-card fade-in" ref={setFadeRef}>
+                    <div className="about-icon">🎭</div>
+                    <h3>페르소나 지시문</h3>
+                    <p><strong>10,000자</strong>까지 작성 가능<br />VC, 고객, 평가위원 등 정밀한 역할 부여<br />한 페르소나당 <strong>10분 안팎</strong> 권장</p>
+                  </div>
+                  <div className="about-card fade-in" ref={setFadeRef}>
+                    <div className="about-icon">💬</div>
+                    <h3>일일 사용량</h3>
+                    <p>무료: 질문 <strong>50회/일</strong>, 노트북 <strong>100개</strong><br />Plus: 질문 <strong>500회/일</strong>, 노트북 <strong>500개</strong><br />딥리서치 1회에 소스 <strong>8~15개</strong> 자동 추가</p>
+                  </div>
                 </div>
               </div>
 
