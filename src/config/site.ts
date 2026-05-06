@@ -79,18 +79,18 @@ const site: SiteConfig = {
     {
       path: '#',
       activePath: '/techniques',
-      labelKey: 'site.nav.learningMaterials',
+      labelKey: 'site.nav.learningContent',
       dropdown: [
         { path: '/techniques', labelKey: 'site.nav.workflow' },
         { path: '/use-cases', labelKey: 'site.nav.useCases' },
-        { path: '/resources', labelKey: 'site.nav.resources' },
       ]
     },
     {
       path: '#',
-      activePath: '/consulting',
-      labelKey: 'site.nav.training',
+      activePath: '/resources',
+      labelKey: 'site.nav.support',
       dropdown: [
+        { path: '/resources', labelKey: 'site.nav.resources' },
         { path: '/consulting', labelKey: 'site.nav.consulting' },
         { path: '/consulting#faq', labelKey: 'site.nav.faq' },
       ]
