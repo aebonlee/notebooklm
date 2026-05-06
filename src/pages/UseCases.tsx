@@ -1,10 +1,11 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import type { ReactElement } from 'react';
 
 const useCaseCategories = [
   {
+    id: 'business',
     badge: 'BUSINESS',
     title: '비즈니스 & 창업',
     cases: [
@@ -15,6 +16,7 @@ const useCaseCategories = [
     ]
   },
   {
+    id: 'research',
     badge: 'RESEARCH',
     title: '연구 & 학술',
     cases: [
@@ -25,6 +27,7 @@ const useCaseCategories = [
     ]
   },
   {
+    id: 'education',
     badge: 'EDUCATION',
     title: '교육 현장',
     cases: [
@@ -42,13 +45,26 @@ const realScenarios = [
   { title: '기업 마케팅팀: 경쟁사 분석', desc: '경쟁사 5곳의 웹사이트, 보도자료, 재무제표를 수집 → 비교 분석표 → SWOT → 전략 제안서.', result: '분석 시간 70% 단축' },
 ];
 
+const navSections = [
+  { id: 'business', label: '비즈니스 & 창업' },
+  { id: 'research', label: '연구 & 학술' },
+  { id: 'education', label: '교육 현장' },
+  { id: 'scenarios', label: '실전 시나리오' },
+];
+
 const UseCases = (): ReactElement => {
+  const [activeSection, setActiveSection] = useState('business');
   const fadeRefs = useRef<(HTMLElement | null)[]>([]);
+  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
   const setFadeRef = useCallback((el: HTMLElement | null) => {
     if (el && !fadeRefs.current.includes(el)) {
       fadeRefs.current.push(el);
     }
+  }, []);
+
+  const setSectionRef = useCallback((id: string) => (el: HTMLElement | null) => {
+    sectionRefs.current[id] = el;
   }, []);
 
   useEffect(() => {
@@ -67,6 +83,26 @@ const UseCases = (): ReactElement => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+    );
+    Object.values(sectionRefs.current).forEach((el) => { if (el) observer.observe(el); });
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <>
       <SEOHead title="활용사례" description="NotebookLM 실전 활용 사례. 비즈니스, 연구, 교육 현장에서의 활용법." path="/use-cases" />
@@ -79,59 +115,63 @@ const UseCases = (): ReactElement => {
         </div>
       </section>
 
-      {/* 분야별 활용 */}
-      {useCaseCategories.map((cat, i) => (
-        <section className={`section${i % 2 === 1 ? ' section-alt' : ''}`} key={i}>
-          <div className="container">
-            <div className="section-header">
-              <span className="section-badge">{cat.badge}</span>
-              <h2 className="section-title">{cat.title}</h2>
-            </div>
-            <div className="use-cases-grid">
-              {cat.cases.map((c, j) => (
-                <div className="use-case-card fade-in" key={j} ref={setFadeRef}>
-                  <div className="use-case-icon">{c.icon}</div>
-                  <h3>{c.title}</h3>
-                  <p>{c.desc}</p>
+      <section className="section">
+        <div className="container">
+          <div className="page-sidebar-layout">
+            {/* Left Sidebar */}
+            <aside className="page-sidebar">
+              <nav className="page-sidebar-nav">
+                {navSections.map((s) => (
+                  <button key={s.id} className={`nav-item${activeSection === s.id ? ' active' : ''}`} onClick={() => scrollTo(s.id)}>
+                    <span className="nav-dot"></span>
+                    {s.label}
+                  </button>
+                ))}
+              </nav>
+            </aside>
+
+            {/* Right Content */}
+            <div className="page-main">
+              {/* 분야별 활용 */}
+              {useCaseCategories.map((cat) => (
+                <div id={cat.id} key={cat.id} ref={setSectionRef(cat.id)} className="content-section fade-in" ref-fade={setFadeRef}>
+                  <span className="content-section-badge">{cat.badge}</span>
+                  <h2 className="content-section-title">{cat.title}</h2>
+                  <div className="use-cases-grid">
+                    {cat.cases.map((c, j) => (
+                      <div className="use-case-card fade-in" key={j} ref={setFadeRef}>
+                        <div className="use-case-icon">{c.icon}</div>
+                        <h3>{c.title}</h3>
+                        <p>{c.desc}</p>
+                      </div>
+                    ))}
+                  </div>
                 </div>
               ))}
-            </div>
-          </div>
-        </section>
-      ))}
 
-      {/* 실전 시나리오 */}
-      <section className="section section-alt">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-badge">REAL STORIES</span>
-            <h2 className="section-title">실전 시나리오</h2>
-            <p className="section-desc">NotebookLM을 활용한 실제 성과 사례</p>
-          </div>
-          <div className="scenarios-grid">
-            {realScenarios.map((s, i) => (
-              <div className="scenario-card fade-in" key={i} ref={setFadeRef}>
-                <h3>{s.title}</h3>
-                <p>{s.desc}</p>
-                <div className="scenario-result">
-                  <span className="result-badge">결과</span>
-                  <span>{s.result}</span>
+              {/* 실전 시나리오 */}
+              <div id="scenarios" ref={setSectionRef('scenarios')} className="content-section fade-in" ref-fade={setFadeRef}>
+                <span className="content-section-badge">REAL STORIES</span>
+                <h2 className="content-section-title">실전 시나리오</h2>
+                <p className="content-section-desc">NotebookLM을 활용한 실제 성과 사례</p>
+                <div className="scenarios-grid">
+                  {realScenarios.map((s, i) => (
+                    <div className="scenario-card fade-in" key={i} ref={setFadeRef}>
+                      <h3>{s.title}</h3>
+                      <p>{s.desc}</p>
+                      <div className="scenario-result">
+                        <span className="result-badge">결과</span>
+                        <span>{s.result}</span>
+                      </div>
+                    </div>
+                  ))}
+                </div>
+
+                <div className="cta-actions" style={{ marginTop: '32px', justifyContent: 'flex-start' }}>
+                  <Link to="/consulting" className="btn btn-primary">교육 문의하기</Link>
+                  <Link to="/curriculum" className="btn btn-outline">커리큘럼 보기</Link>
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="section cta-section">
-        <div className="container">
-          <div className="cta-content">
-            <h2>이 활용법을 직접 배워보세요</h2>
-            <p>DreamIT Biz의 교육 과정에서 실전 실습과 피드백을 받을 수 있습니다.</p>
-            <div className="cta-actions">
-              <Link to="/consulting" className="btn btn-primary btn-lg">교육 문의하기</Link>
-              <Link to="/curriculum" className="btn btn-outline btn-lg">커리큘럼 보기</Link>
             </div>
           </div>
         </div>

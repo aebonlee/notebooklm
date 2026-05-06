@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import type { ReactElement } from 'react';
@@ -25,13 +25,26 @@ const commonMistakes = [
   { bad: '소스 50개를 전부 체크한 채 질문', good: '관련 소스 5~10개만 선택하여 집중 질문' },
 ];
 
+const sections = [
+  { id: 'setup', label: '첫 노트북 만들기' },
+  { id: 'tips', label: '초보자 필수 팁' },
+  { id: 'mistakes', label: '흔한 실수' },
+  { id: 'next', label: '다음 단계' },
+];
+
 const Guide = (): ReactElement => {
+  const [activeSection, setActiveSection] = useState('setup');
   const fadeRefs = useRef<(HTMLElement | null)[]>([]);
+  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
   const setFadeRef = useCallback((el: HTMLElement | null) => {
     if (el && !fadeRefs.current.includes(el)) {
       fadeRefs.current.push(el);
     }
+  }, []);
+
+  const setSectionRef = useCallback((id: string) => (el: HTMLElement | null) => {
+    sectionRefs.current[id] = el;
   }, []);
 
   useEffect(() => {
@@ -50,6 +63,26 @@ const Guide = (): ReactElement => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+    );
+    Object.values(sectionRefs.current).forEach((el) => { if (el) observer.observe(el); });
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
   return (
     <>
       <SEOHead title="시작 가이드" description="NotebookLM을 처음 사용하는 분을 위한 시작 가이드. 사전 준비부터 첫 노트북 만들기까지." path="/guide" />
@@ -62,79 +95,85 @@ const Guide = (): ReactElement => {
         </div>
       </section>
 
-      {/* 사전 준비 */}
       <section className="section">
         <div className="container">
-          <div className="section-header">
-            <span className="section-badge">SETUP</span>
-            <h2 className="section-title">첫 노트북 만들기</h2>
-            <p className="section-desc">4단계로 바로 시작할 수 있습니다</p>
-          </div>
-          <div className="steps-timeline">
-            {setupSteps.map((step, i) => (
-              <div className="step fade-in" key={i} ref={setFadeRef}>
-                <div className="step-marker"><span>{step.num}</span></div>
-                <div className="step-content">
-                  <h3>{step.title}</h3>
-                  <p>{step.desc}</p>
+          <div className="page-sidebar-layout">
+            {/* Left Sidebar */}
+            <aside className="page-sidebar">
+              <nav className="page-sidebar-nav">
+                {sections.map((s) => (
+                  <button key={s.id} className={`nav-item${activeSection === s.id ? ' active' : ''}`} onClick={() => scrollTo(s.id)}>
+                    <span className="nav-dot"></span>
+                    {s.label}
+                  </button>
+                ))}
+              </nav>
+            </aside>
+
+            {/* Right Content */}
+            <div className="page-main">
+              {/* 첫 노트북 만들기 */}
+              <div id="setup" ref={setSectionRef('setup')} className="content-section fade-in" ref-fade={setFadeRef}>
+                <span className="content-section-badge">SETUP</span>
+                <h2 className="content-section-title">첫 노트북 만들기</h2>
+                <p className="content-section-desc">4단계로 바로 시작할 수 있습니다</p>
+                <div className="steps-timeline">
+                  {setupSteps.map((step, i) => (
+                    <div className="step fade-in" key={i} ref={setFadeRef}>
+                      <div className="step-marker"><span>{step.num}</span></div>
+                      <div className="step-content">
+                        <h3>{step.title}</h3>
+                        <p>{step.desc}</p>
+                      </div>
+                    </div>
+                  ))}
                 </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* 초보자 팁 */}
-      <section className="section section-alt">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-badge">TIPS</span>
-            <h2 className="section-title">초보자 필수 팁 5가지</h2>
-            <p className="section-desc">처음부터 알았으면 좋았을 핵심 노하우</p>
-          </div>
-          <div className="guide-tips-grid">
-            {beginnerTips.map((tip, i) => (
-              <div className="guide-tip-card fade-in" key={i} ref={setFadeRef}>
-                <div className="guide-tip-number">{tip.icon}</div>
-                <h3>{tip.title}</h3>
-                <p>{tip.desc}</p>
+              {/* 초보자 팁 */}
+              <div id="tips" ref={setSectionRef('tips')} className="content-section fade-in" ref-fade={setFadeRef}>
+                <span className="content-section-badge">TIPS</span>
+                <h2 className="content-section-title">초보자 필수 팁 5가지</h2>
+                <p className="content-section-desc">처음부터 알았으면 좋았을 핵심 노하우</p>
+                <div className="guide-tips-grid">
+                  {beginnerTips.map((tip, i) => (
+                    <div className="guide-tip-card fade-in" key={i} ref={setFadeRef}>
+                      <div className="guide-tip-number">{tip.icon}</div>
+                      <h3>{tip.title}</h3>
+                      <p>{tip.desc}</p>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* 흔한 실수 */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-badge">AVOID</span>
-            <h2 className="section-title">흔한 실수 & 올바른 방법</h2>
-          </div>
-          <div className="mistakes-grid fade-in" ref={setFadeRef}>
-            <div className="mistakes-header">
-              <span>흔한 실수</span>
-              <span>올바른 방법</span>
-            </div>
-            {commonMistakes.map((m, i) => (
-              <div className="mistakes-row" key={i}>
-                <div className="mistake-bad"><span className="mistake-x">✗</span> {m.bad}</div>
-                <div className="mistake-good"><span className="mistake-check">✓</span> {m.good}</div>
+              {/* 흔한 실수 */}
+              <div id="mistakes" ref={setSectionRef('mistakes')} className="content-section fade-in" ref-fade={setFadeRef}>
+                <span className="content-section-badge">AVOID</span>
+                <h2 className="content-section-title">흔한 실수 & 올바른 방법</h2>
+                <div className="mistakes-grid fade-in" ref={setFadeRef}>
+                  <div className="mistakes-header">
+                    <span>흔한 실수</span>
+                    <span>올바른 방법</span>
+                  </div>
+                  {commonMistakes.map((m, i) => (
+                    <div className="mistakes-row" key={i}>
+                      <div className="mistake-bad"><span className="mistake-x">✗</span> {m.bad}</div>
+                      <div className="mistake-good"><span className="mistake-check">✓</span> {m.good}</div>
+                    </div>
+                  ))}
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
 
-      {/* CTA */}
-      <section className="section cta-section">
-        <div className="container">
-          <div className="cta-content">
-            <h2>더 깊이 배우고 싶다면?</h2>
-            <p>DreamIT Biz의 7개 챕터 커리큘럼으로 체계적으로 학습하세요.</p>
-            <div className="cta-actions">
-              <Link to="/curriculum" className="btn btn-primary btn-lg">커리큘럼 보기</Link>
-              <a href="https://notebooklm.google/" target="_blank" rel="noopener noreferrer" className="btn btn-outline btn-lg">NotebookLM 시작하기</a>
+              {/* 다음 단계 */}
+              <div id="next" ref={setSectionRef('next')} className="content-section">
+                <span className="content-section-badge">NEXT STEP</span>
+                <h2 className="content-section-title">더 깊이 배우고 싶다면?</h2>
+                <p className="content-section-desc">DreamIT Biz의 7개 챕터 커리큘럼으로 체계적으로 학습하세요.</p>
+                <div className="cta-actions" style={{ justifyContent: 'flex-start' }}>
+                  <Link to="/curriculum" className="btn btn-primary">커리큘럼 보기</Link>
+                  <a href="https://notebooklm.google/" target="_blank" rel="noopener noreferrer" className="btn btn-outline">NotebookLM 시작하기</a>
+                </div>
+              </div>
             </div>
           </div>
         </div>

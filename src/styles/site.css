@@ -2269,6 +2269,171 @@
 }
 
 /* ============================================
+   Generic Page Sidebar Layout (shared by Guide/Techniques/About/UseCases)
+   ============================================ */
+
+.page-sidebar-layout {
+    display: grid;
+    grid-template-columns: 220px 1fr;
+    gap: 48px;
+    align-items: start;
+}
+
+.page-sidebar {
+    position: sticky;
+    top: calc(var(--nav-height, 64px) + 24px);
+    max-height: calc(100vh - var(--nav-height, 64px) - 48px);
+    overflow-y: auto;
+}
+
+.page-sidebar-nav {
+    display: flex;
+    flex-direction: column;
+    gap: 2px;
+    border-left: 2px solid var(--nlm-gray-300);
+    padding-left: 0;
+}
+
+.page-sidebar-nav .nav-item {
+    display: flex;
+    align-items: center;
+    gap: 10px;
+    padding: 10px 16px;
+    font-size: 0.84rem;
+    font-weight: 500;
+    color: var(--nlm-gray-600);
+    background: none;
+    border: none;
+    cursor: pointer;
+    text-align: left;
+    border-radius: 0 var(--nlm-radius) var(--nlm-radius) 0;
+    transition: var(--nlm-transition);
+    position: relative;
+    margin-left: -2px;
+    border-left: 2px solid transparent;
+    font-family: 'Noto Sans KR', sans-serif;
+    line-height: 1.4;
+}
+
+.page-sidebar-nav .nav-item:hover {
+    color: var(--nlm-primary);
+    background: var(--nlm-primary-light);
+}
+
+.page-sidebar-nav .nav-item.active {
+    color: var(--nlm-primary);
+    font-weight: 700;
+    background: var(--nlm-primary-light);
+    border-left-color: var(--nlm-primary);
+}
+
+.page-sidebar-nav .nav-item .nav-dot {
+    width: 6px;
+    height: 6px;
+    border-radius: 50%;
+    background: var(--nlm-gray-400);
+    flex-shrink: 0;
+}
+
+.page-sidebar-nav .nav-item.active .nav-dot {
+    background: var(--nlm-primary);
+    width: 8px;
+    height: 8px;
+}
+
+.page-main {
+    display: flex;
+    flex-direction: column;
+    gap: 0;
+}
+
+.page-main .content-section {
+    padding: 40px 0;
+    border-bottom: 1px solid var(--nlm-gray-200);
+}
+
+.page-main .content-section:first-child {
+    padding-top: 0;
+}
+
+.page-main .content-section:last-child {
+    border-bottom: none;
+}
+
+.content-section-title {
+    font-size: 1.5rem;
+    font-weight: 800;
+    color: var(--nlm-gray-900);
+    margin-bottom: 8px;
+}
+
+.content-section-desc {
+    font-size: 0.95rem;
+    color: var(--nlm-gray-600);
+    margin-bottom: 24px;
+    line-height: 1.6;
+}
+
+.content-section-badge {
+    display: inline-block;
+    font-size: 0.7rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    letter-spacing: 1.5px;
+    color: var(--nlm-primary);
+    background: var(--nlm-primary-light);
+    padding: 4px 10px;
+    border-radius: var(--nlm-radius-full);
+    margin-bottom: 12px;
+}
+
+/* Responsive: 1024px */
+@media (max-width: 1024px) {
+    .page-sidebar-layout {
+        grid-template-columns: 180px 1fr;
+        gap: 32px;
+    }
+}
+
+/* Responsive: 768px — sidebar → horizontal chips */
+@media (max-width: 768px) {
+    .page-sidebar-layout {
+        grid-template-columns: 1fr;
+        gap: 0;
+    }
+    .page-sidebar {
+        position: static;
+        max-height: none;
+        overflow: visible;
+        border-bottom: 1px solid var(--nlm-gray-300);
+        padding-bottom: 20px;
+        margin-bottom: 28px;
+    }
+    .page-sidebar-nav {
+        flex-direction: row;
+        flex-wrap: wrap;
+        border-left: none;
+        gap: 8px;
+    }
+    .page-sidebar-nav .nav-item {
+        margin-left: 0;
+        border-left: none;
+        border-bottom: 2px solid transparent;
+        border-radius: var(--nlm-radius-full);
+        padding: 7px 14px;
+        font-size: 0.78rem;
+        background: var(--nlm-gray-100);
+    }
+    .page-sidebar-nav .nav-item.active {
+        border-bottom-color: var(--nlm-primary);
+        background: var(--nlm-primary-light);
+    }
+    .page-sidebar-nav .nav-item .nav-dot {
+        display: none;
+    }
+}
+
+/* ============================================
    Dark Mode — NotebookLM Custom Elements
    ============================================ */
 

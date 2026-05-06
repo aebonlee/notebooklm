@@ -1,4 +1,4 @@
-import { useEffect, useRef, useCallback } from 'react';
+import { useState, useEffect, useRef, useCallback } from 'react';
 import { Link } from 'react-router-dom';
 import SEOHead from '../components/SEOHead';
 import type { ReactElement } from 'react';
@@ -76,15 +76,34 @@ const workflowCards: WorkflowCard[] = [
   },
 ];
 
+const navSections = [
+  { id: 'overview', label: '기법 개요' },
+  { id: 'deep-research', label: '딥리서치 질문 설계' },
+  { id: 'trust-grade', label: '자료 신뢰도 등급제' },
+  { id: 'persona', label: '출처 있는 페르소나' },
+  { id: 'persona-verify', label: '다각도 검증' },
+  { id: 'biz-plan', label: '사업계획서 7절' },
+  { id: 'ir-deck', label: 'IR Deck 10슬라이드' },
+  { id: 'summary', label: '요약 & 난이도' },
+];
+
+const sectionIds = ['overview', 'deep-research', 'trust-grade', 'persona', 'persona-verify', 'biz-plan', 'ir-deck', 'summary'];
+
 /* ─── Component ─── */
 
 const Techniques = (): ReactElement => {
+  const [activeSection, setActiveSection] = useState('overview');
   const fadeRefs = useRef<(HTMLElement | null)[]>([]);
+  const sectionRefs = useRef<Record<string, HTMLElement | null>>({});
 
   const setFadeRef = useCallback((el: HTMLElement | null) => {
     if (el && !fadeRefs.current.includes(el)) {
       fadeRefs.current.push(el);
     }
+  }, []);
+
+  const setSectionRef = useCallback((id: string) => (el: HTMLElement | null) => {
+    sectionRefs.current[id] = el;
   }, []);
 
   useEffect(() => {
@@ -103,11 +122,86 @@ const Techniques = (): ReactElement => {
     return () => observer.disconnect();
   }, []);
 
+  useEffect(() => {
+    const observer = new IntersectionObserver(
+      (entries) => {
+        entries.forEach((entry) => {
+          if (entry.isIntersecting) {
+            setActiveSection(entry.target.id);
+          }
+        });
+      },
+      { rootMargin: '-80px 0px -60% 0px', threshold: 0 }
+    );
+    Object.values(sectionRefs.current).forEach((el) => { if (el) observer.observe(el); });
+    return () => observer.disconnect();
+  }, []);
+
+  const scrollTo = (id: string) => {
+    const el = document.getElementById(id);
+    if (el) el.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  };
+
+  const renderCard = (w: WorkflowCard) => (
+    <>
+      <p className="content-section-desc">{w.desc}</p>
+
+      {w.type === 'before-after' && (
+        <div className="workflow-example">
+          <div className="workflow-bad">
+            <span>{w.badLabel || 'Before'}</span>
+            <p>{w.bad}</p>
+          </div>
+          <div className="workflow-good">
+            <span>{w.goodLabel || 'After'}</span>
+            <p>{w.good}</p>
+          </div>
+        </div>
+      )}
+      {w.type === 'table' && (
+        <div className="workflow-table">
+          <div className="wf-row wf-header">
+            <span>등급</span><span>정의</span><span>예시</span>
+          </div>
+          {w.rows.map((r, j) => (
+            <div className={`wf-row ${r.cls}`} key={j}>
+              <span>{r.grade}</span><span>{r.def}</span><span>{r.ex}</span>
+            </div>
+          ))}
+        </div>
+      )}
+      {w.type === 'personas' && (
+        <div className="workflow-personas">
+          {w.personas.map((p, j) => (
+            <div className={`persona-chip ${p.cls}`} key={j}>{p.label}</div>
+          ))}
+        </div>
+      )}
+      {w.type === 'chips' && (
+        <div className="workflow-steps-mini">
+          {w.chips.map((c, j) => <span key={j}>{c}</span>)}
+        </div>
+      )}
+
+      <div className="technique-extra">
+        <div className="step-tip">
+          <span className="tip-badge">왜 중요한가</span>
+          <p>{w.why}</p>
+        </div>
+        <div className="technique-tips">
+          <strong>실전 적용 팁</strong>
+          <ul>
+            {w.tips.map((tip, j) => <li key={j}>{tip}</li>)}
+          </ul>
+        </div>
+      </div>
+    </>
+  );
+
   return (
     <>
       <SEOHead title="교육 핵심 기법" description="DreamIT Biz 교육 과정에서 배우는 NotebookLM 6가지 실전 기법. 딥리서치, 신뢰도 등급, 페르소나 검증 등." path="/techniques" />
 
-      {/* page-header */}
       <section className="page-header">
         <div className="container">
           <span className="page-badge">KEY TECHNIQUES</span>
@@ -116,145 +210,91 @@ const Techniques = (): ReactElement => {
         </div>
       </section>
 
-      {/* Section 1: 기법 개요 */}
       <section className="section">
         <div className="container">
-          <div className="about-card about-main fade-in" ref={setFadeRef}>
-            <div className="about-icon">🛠️</div>
-            <h3>왜 기법이 중요한가?</h3>
-            <p>NotebookLM은 도구일 뿐, <strong>좋은 결과를 만드는 것은 기법</strong>입니다. 같은 도구를 사용해도 질문 설계, 자료 분류, 검증 방법에 따라 결과물의 품질이 크게 달라집니다. DreamIT Biz 교육에서는 이 6가지 핵심 기법을 반복 실습합니다.</p>
-          </div>
-        </div>
-      </section>
+          <div className="page-sidebar-layout">
+            {/* Left Sidebar */}
+            <aside className="page-sidebar">
+              <nav className="page-sidebar-nav">
+                {navSections.map((s) => (
+                  <button key={s.id} className={`nav-item${activeSection === s.id ? ' active' : ''}`} onClick={() => scrollTo(s.id)}>
+                    <span className="nav-dot"></span>
+                    {s.label}
+                  </button>
+                ))}
+              </nav>
+            </aside>
 
-      {/* Section 2: 6가지 기법 상세 */}
-      <section className="section section-alt">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-badge">6 TECHNIQUES</span>
-            <h2 className="section-title">6가지 핵심 기법</h2>
-            <p className="section-desc">각 기법의 원리, 예시, 실전 적용 팁을 확인하세요</p>
-          </div>
-          <div className="workflow-grid">
-            {workflowCards.map((w, i) => (
-              <div className="workflow-card fade-in" key={i} ref={setFadeRef}>
-                <div className="workflow-icon">{w.icon}</div>
-                <h3>{w.title}</h3>
-                <p>{w.desc}</p>
+            {/* Right Content */}
+            <div className="page-main">
+              {/* 기법 개요 */}
+              <div id="overview" ref={setSectionRef('overview')} className="content-section fade-in" ref-fade={setFadeRef}>
+                <span className="content-section-badge">OVERVIEW</span>
+                <h2 className="content-section-title">왜 기법이 중요한가?</h2>
+                <p className="content-section-desc">
+                  NotebookLM은 도구일 뿐, <strong>좋은 결과를 만드는 것은 기법</strong>입니다. 같은 도구를 사용해도 질문 설계, 자료 분류, 검증 방법에 따라 결과물의 품질이 크게 달라집니다. DreamIT Biz 교육에서는 이 6가지 핵심 기법을 반복 실습합니다.
+                </p>
+              </div>
 
-                {w.type === 'before-after' && (
-                  <div className="workflow-example">
-                    <div className="workflow-bad">
-                      <span>{w.badLabel || 'Before'}</span>
-                      <p>{w.bad}</p>
-                    </div>
-                    <div className="workflow-good">
-                      <span>{w.goodLabel || 'After'}</span>
-                      <p>{w.good}</p>
-                    </div>
-                  </div>
-                )}
-                {w.type === 'table' && (
-                  <div className="workflow-table">
-                    <div className="wf-row wf-header">
-                      <span>등급</span><span>정의</span><span>예시</span>
-                    </div>
-                    {w.rows.map((r, j) => (
-                      <div className={`wf-row ${r.cls}`} key={j}>
-                        <span>{r.grade}</span><span>{r.def}</span><span>{r.ex}</span>
-                      </div>
-                    ))}
-                  </div>
-                )}
-                {w.type === 'personas' && (
-                  <div className="workflow-personas">
-                    {w.personas.map((p, j) => (
-                      <div className={`persona-chip ${p.cls}`} key={j}>{p.label}</div>
-                    ))}
-                  </div>
-                )}
-                {w.type === 'chips' && (
-                  <div className="workflow-steps-mini">
-                    {w.chips.map((c, j) => <span key={j}>{c}</span>)}
-                  </div>
-                )}
+              {/* 6가지 기법 — 각각 독립 섹션 */}
+              {workflowCards.map((w, i) => (
+                <div id={sectionIds[i + 1]} key={i} ref={setSectionRef(sectionIds[i + 1])} className="content-section fade-in" ref-fade={setFadeRef}>
+                  <span className="content-section-badge">{`기법 ${i + 1}`}</span>
+                  <h2 className="content-section-title">
+                    <span style={{ marginRight: '8px' }}>{w.icon}</span>{w.title}
+                  </h2>
+                  {renderCard(w)}
+                </div>
+              ))}
 
-                {/* Extended content */}
-                <div className="technique-extra">
-                  <div className="step-tip">
-                    <span className="tip-badge">왜 중요한가</span>
-                    <p>{w.why}</p>
+              {/* 요약 & 난이도 */}
+              <div id="summary" ref={setSectionRef('summary')} className="content-section fade-in" ref-fade={setFadeRef}>
+                <span className="content-section-badge">SUMMARY</span>
+                <h2 className="content-section-title">기법 요약 & 난이도</h2>
+                <p className="content-section-desc">각 기법의 난이도와 관련 챕터를 확인하세요</p>
+                <div className="comparison-table">
+                  <div className="comp-row comp-header">
+                    <span>기법</span>
+                    <span>난이도</span>
+                    <span>관련 챕터</span>
                   </div>
-                  <div className="technique-tips">
-                    <strong>실전 적용 팁</strong>
-                    <ul>
-                      {w.tips.map((tip, j) => <li key={j}>{tip}</li>)}
-                    </ul>
+                  <div className="comp-row">
+                    <span>딥리서치 질문 설계</span>
+                    <span><span className="difficulty-badge easy">초급</span></span>
+                    <span><Link to="/curriculum/ch2">CH.2</Link></span>
+                  </div>
+                  <div className="comp-row comp-even">
+                    <span>자료 신뢰도 등급제</span>
+                    <span><span className="difficulty-badge easy">초급</span></span>
+                    <span><Link to="/curriculum/ch2">CH.2</Link></span>
+                  </div>
+                  <div className="comp-row">
+                    <span>출처 있는 페르소나</span>
+                    <span><span className="difficulty-badge medium">중급</span></span>
+                    <span><Link to="/curriculum/ch3">CH.3</Link></span>
+                  </div>
+                  <div className="comp-row comp-even">
+                    <span>다각도 페르소나 검증</span>
+                    <span><span className="difficulty-badge medium">중급</span></span>
+                    <span><Link to="/curriculum/ch4">CH.4</Link></span>
+                  </div>
+                  <div className="comp-row">
+                    <span>사업계획서 7절 구조</span>
+                    <span><span className="difficulty-badge hard">고급</span></span>
+                    <span><Link to="/curriculum/ch6">CH.6</Link></span>
+                  </div>
+                  <div className="comp-row comp-even">
+                    <span>IR Deck 10슬라이드</span>
+                    <span><span className="difficulty-badge hard">고급</span></span>
+                    <span><Link to="/curriculum/ch6">CH.6</Link></span>
                   </div>
                 </div>
+
+                <div className="cta-actions" style={{ marginTop: '32px', justifyContent: 'flex-start' }}>
+                  <Link to="/consulting" className="btn btn-primary">교육 문의하기</Link>
+                  <Link to="/curriculum" className="btn btn-outline">커리큘럼 보기</Link>
+                </div>
               </div>
-            ))}
-          </div>
-        </div>
-      </section>
-
-      {/* Section 3: 요약 테이블 */}
-      <section className="section">
-        <div className="container">
-          <div className="section-header">
-            <span className="section-badge">SUMMARY</span>
-            <h2 className="section-title">기법 요약 & 난이도</h2>
-            <p className="section-desc">각 기법의 난이도와 관련 챕터를 확인하세요</p>
-          </div>
-          <div className="comparison-table fade-in" ref={setFadeRef}>
-            <div className="comp-row comp-header">
-              <span>기법</span>
-              <span>난이도</span>
-              <span>관련 챕터</span>
-            </div>
-            <div className="comp-row">
-              <span>딥리서치 질문 설계</span>
-              <span><span className="difficulty-badge easy">초급</span></span>
-              <span><Link to="/curriculum/ch2">CH.2</Link></span>
-            </div>
-            <div className="comp-row comp-even">
-              <span>자료 신뢰도 등급제</span>
-              <span><span className="difficulty-badge easy">초급</span></span>
-              <span><Link to="/curriculum/ch2">CH.2</Link></span>
-            </div>
-            <div className="comp-row">
-              <span>출처 있는 페르소나</span>
-              <span><span className="difficulty-badge medium">중급</span></span>
-              <span><Link to="/curriculum/ch3">CH.3</Link></span>
-            </div>
-            <div className="comp-row comp-even">
-              <span>다각도 페르소나 검증</span>
-              <span><span className="difficulty-badge medium">중급</span></span>
-              <span><Link to="/curriculum/ch4">CH.4</Link></span>
-            </div>
-            <div className="comp-row">
-              <span>사업계획서 7절 구조</span>
-              <span><span className="difficulty-badge hard">고급</span></span>
-              <span><Link to="/curriculum/ch6">CH.6</Link></span>
-            </div>
-            <div className="comp-row comp-even">
-              <span>IR Deck 10슬라이드</span>
-              <span><span className="difficulty-badge hard">고급</span></span>
-              <span><Link to="/curriculum/ch6">CH.6</Link></span>
-            </div>
-          </div>
-        </div>
-      </section>
-
-      {/* CTA */}
-      <section className="section cta-section">
-        <div className="container">
-          <div className="cta-content">
-            <h2>이 기법을 직접 배워보세요</h2>
-            <p>DreamIT Biz의 교육 프로그램에서 실전 실습과 피드백을 받을 수 있습니다.</p>
-            <div className="cta-actions">
-              <Link to="/consulting" className="btn btn-primary btn-lg">교육 문의하기</Link>
-              <Link to="/curriculum" className="btn btn-outline btn-lg">커리큘럼 보기</Link>
             </div>
           </div>
         </div>
